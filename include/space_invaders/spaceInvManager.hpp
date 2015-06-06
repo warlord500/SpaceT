@@ -2,6 +2,7 @@
 #define PLAYERMANGER_H
 #include <space_invaders/player.h>
 #include <space_invaders/bullets/pBullet.hpp>
+#include <space_invaders/enemy.hpp>
 #include <list>
 #include <chrono>
 class textureManager;
@@ -20,7 +21,7 @@ class RenderWindow;
         <player> - instance this class manages
         <pbullet> - player bullet
 */
-class playerManager
+class spaceInvManager
 {
 public:
     //group: public constructors
@@ -29,8 +30,11 @@ public:
             construct playerManager using image DataBase.
 
         Parameters:
-            images(1) -- the image manager to be used
+            images(1)  the image manager to be used
                 by the playerManager.
+            screenSize(2) set player base positon
+                 with this screen size.
+
 
         Warning:
             images must live as long as their is
@@ -39,9 +43,23 @@ public:
         See Also:
             <textureManager>
     */
-    playerManager(const textureManager& images,sf::FloatRect);
+    spaceInvManager(const textureManager& images,const sf::FloatRect&);
     //group: public methods
     /*
+        function: update
+
+        updates all instances involving the player on the space
+        invaders game. this function handles
+    */
+    void update(sf::RenderWindow&,const sf::FloatRect&);
+
+
+
+
+protected:
+private:
+// group: private data
+     /*
         Function: drawItems(sf::RenderWindow&)
             draw the player and player bullets on window
 
@@ -55,7 +73,7 @@ public:
             check if any of the player bullets
             have reached the end of the screen.
     */
-    void checkSides();
+    void checkSides(const sf::FloatRect&);
     /*
         Function: keyEvents
             checks events and the key board.
@@ -63,13 +81,12 @@ public:
             this function checks the keyboard to
             see if the keys have been pressed.
     */
-    void KeyEvents(void);
-protected:
-private:
+    void KeyEvents(const sf::FloatRect&);
+
     player thePlayer;
     const textureManager& images;
     std::list<pBullet> playerBullets;
-    const sf::FloatRect screenComp;
+    std::list<enemy> enemiesList;
 
 };
 

@@ -2,7 +2,7 @@
 #include <SFML/Window/Event.hpp>
 #include <space_invaders/textureManager.h>
 #include <space_invaders/enemyManager.h>
-#include <space_invaders/playerManager.hpp>
+#include <space_invaders/spaceInvManager.hpp>
 #include "tetrisGameManager.h"
 #include "main.h"
 /*
@@ -29,8 +29,8 @@ int main()
         return 255;
     sf::FloatRect screenRectSpaceInv(tetrisGameManager::getTetrisGameSize().x,0,
             screenWidth - tetrisGameManager::getTetrisGameSize().x,screenHeight);
-    playerManager playMan(images,screenRectSpaceInv);
-    enemyManager eneMan(images,screenRectSpaceInv);
+    spaceInvManager playMan(images,screenRectSpaceInv);
+   // enemyManager eneMan(images,screenRectSpaceInv);
             //the size of screen playing in.)
 
     while (window.isOpen())
@@ -55,10 +55,9 @@ int main()
 
         // Draw tetris grid
         gameManager.updateGrid(window);
-        eneMan.update(window);
-        playMan.drawItems(window);
-        playMan.KeyEvents();
-        playMan.checkSides(); //*/
+        // remove from code because playermanager will replace the need for it.
+        //eneMan.update(window);
+        playMan.update(window,screenRectSpaceInv);
         // Update the window
         window.display();
     }

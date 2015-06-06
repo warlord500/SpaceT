@@ -4,6 +4,7 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Keyboard.hpp>
+#include <chrono>
 // TODO (jadon#1#): moves only long the x axis ...
 //create function to do that
 /*

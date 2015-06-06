@@ -14,3 +14,5 @@ SpaceT
 
 # Emacs backup files
 *~
+
+./ahead.sh
