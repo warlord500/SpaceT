@@ -18,6 +18,10 @@ class pBullet : public bullet
             //if not inside global screen
             return !(this->getSprite().getGlobalBounds().intersects(rect));
         }
+        bool intersects(const sf::FloatRect& rect)
+        {
+            return this->getSprite().getGlobalBounds().intersects(rect);
+        }
     protected:
     private:
 };

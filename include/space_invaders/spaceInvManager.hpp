@@ -11,8 +11,8 @@ namespace sf
 class RenderWindow;
 }
 /*
-    Class: playerManager
-        manages the player and player bullets
+    Class: spaceInvadersManager
+       manages and updates all entites on similar
 
     note:
         player ship is placed at the bottom of the screen.

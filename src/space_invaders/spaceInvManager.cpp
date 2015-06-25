@@ -15,45 +15,10 @@ spaceInvManager::spaceInvManager(const textureManager& images,const sf::FloatRec
     enemy NewEnemy(this->images.getTexture("enemy.png"),sf::Vector2f(screenRect.left+50.0f,0.0f));
     this->enemiesList.push_back(NewEnemy);
 }
-void spaceInvManager::drawItems(sf::RenderWindow& app)
-{
-
-    app.draw(thePlayer.getSprite());
-    //draw all of the player bullets
-    auto it = playerBullets.begin();
-    while( it != playerBullets.end() )
-    {
-        app.draw(it->getSprite());
-        ++it;
-    }
-
-}
-void spaceInvManager::checkSides(const sf::FloatRect& screenSize)
-{
-    /*
-        it is an iterator that points
-        the current instance of the
-        playerBullets.
-    */
-    auto it = playerBullets.begin();
-    while( it != playerBullets.end() )
-    {
-        if(it->calcSide(screenSize))
-        {
-            //get rid of bullets on the outside of the screen
-            playerBullets.erase(it++);
-        }
-        else
-        {
-            it->logic();
-            ++it;
-        }
-    }
-}
 void spaceInvManager::KeyEvents(const sf::FloatRect& screenSize)
 {
     // test if it is ok to shoot.
-    if(thePlayer.shootBullet())
+        if(thePlayer.shootBullet())
     {
         pBullet Nbullet(images.getTexture("bullet.png"),
                         thePlayer.getSprite().getPosition());
@@ -66,16 +31,47 @@ void spaceInvManager::KeyEvents(const sf::FloatRect& screenSize)
 
 void spaceInvManager::update(sf::RenderWindow& app,const sf::FloatRect& screenSize)
 {
+
+     app.draw(thePlayer.getSprite());
+    /*
+        it is an iterator that points
+        the current instance of the
+        playerBullets.
+    */
+    auto it = playerBullets.begin();
+    while( it != playerBullets.end())
+    {
+        if(it->calcSide(screenSize))
+        {
+            //get rid of bullets on the outside of the screen
+            playerBullets.erase(it++);
+        }
+        else
+        {
+            it->logic();
+            app.draw(it->getSprite());
+            ++it;
+        }
+    }
     //note for next time
     //dont put semi colon before braces
-    auto it = this->enemiesList.begin();
-    while( it != this->enemiesList.end())
+    auto eneIT = this->enemiesList.begin();
+    while( eneIT != this->enemiesList.end())
     {
-        it->logic();
-        app.draw(it->getSprite());
-        ++it;
+        eneIT->logic();
+        app.draw(eneIT->getSprite());
+        auto it = playerBullets.begin();
+        while((it != playerBullets.end()))
+        {
+            if((*it).intersects(eneIT->getSprite().getGlobalBounds()))
+            {
+                    enemiesList.erase(eneIT++);
+                    playerBullets.erase(it++);
+                    break;
+            }
+            ++it;
+        };
+        ++eneIT;
     }
-    this->drawItems(app);
-    this->checkSides(screenSize);
     this->KeyEvents(screenSize);
 }
