@@ -2,6 +2,7 @@
 #include <SFML/Window/Keyboard.hpp>
 #include <chrono>
 #include <tetrisGameManager.h>
+#include <random>
 tetrisMovableShape::tetrisMovableShape(tetrisGameManager& gm) : horizontalCooldown(false) , verticalCooldown(false),
     end_time(std::chrono::system_clock::now() + std::chrono::milliseconds(250)), gameManager(gm)
 {
