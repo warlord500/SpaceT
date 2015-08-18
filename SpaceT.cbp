@@ -20,9 +20,9 @@
 					<Add directory="../SFML-2.0/include" />
 				</Compiler>
 				<Linker>
-					<Add library="sfml-graphics-d" />
-					<Add library="sfml-window-d" />
-					<Add library="sfml-system-d" />
+					<Add library="sfml-graphics" />
+					<Add library="sfml-window" />
+					<Add library="sfml-system" />
 					<Add directory="../Desktop/SFML-2.0/lib" />
 					<Add directory="../SFML-2.0/lib" />
 				</Linker>
@@ -59,7 +59,6 @@
 		<Unit filename="include/space_invaders/bullet.h" />
 		<Unit filename="include/space_invaders/bullets/pBullet.hpp" />
 		<Unit filename="include/space_invaders/enemy.hpp" />
-		<Unit filename="include/space_invaders/enemyManager.h" />
 		<Unit filename="include/space_invaders/player.h" />
 		<Unit filename="include/space_invaders/playerManager.hpp" />
 		<Unit filename="include/space_invaders/textureManager.h" />
@@ -70,9 +69,8 @@
 		<Unit filename="src/space_invaders/bullet.cpp" />
 		<Unit filename="src/space_invaders/bullets/pBullet.cpp" />
 		<Unit filename="src/space_invaders/enemy.cpp" />
-		<Unit filename="src/space_invaders/enemyManager.cpp" />
 		<Unit filename="src/space_invaders/player.cpp" />
-		<Unit filename="src/space_invaders/playerManager.cpp" />
+		<Unit filename="src/space_invaders/spaceInvManager.cpp" />
 		<Unit filename="src/tetrisGameManager.cpp" />
 		<Unit filename="src/tetrisMovableShape.cpp" />
 		<Extensions>

@@ -1,7 +1,6 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Event.hpp>
 #include <space_invaders/textureManager.h>
-#include <space_invaders/enemyManager.h>
 #include <space_invaders/spaceInvManager.hpp>
 #include "tetrisGameManager.h"
 #include "main.h"
