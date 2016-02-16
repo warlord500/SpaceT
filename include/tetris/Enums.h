@@ -3,8 +3,9 @@
 
 	// the following enum uses the url below as refernce
     // http://mercurymasterpunk.ca/images/tetris.jpg
-  enum class BlockShapes
+  enum BlockShapes
     {
+        random,
         I_shape,
         J_shape,
         L_shape,
@@ -12,7 +13,6 @@
         Z_shape,
         T_shape,
         S_shape
-        /// basic shapes
     };
 
     /*

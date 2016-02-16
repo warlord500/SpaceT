@@ -1,10 +1,9 @@
 #include <tetris/TetrisManager.h>
-#include  <SFML/Graphics/RectangleShape.hpp>
+#include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
-#include "main.h"
 #include <tetris/Enums.h>
 
-tetrisGameManager::tetrisGameManager()
+tetrisGameManager::tetrisGameManager(int windowHeight, int windowWidth) : WINDOW_HEIGHT(windowHeight), WINDOW_WIDTH(windowWidth)
 {
 
 }
@@ -21,7 +20,7 @@ bool  tetrisGameManager::checkLoseCondition()
     return false;
 }
 
-void tetrisGameManager::drawGrid(sf::RenderWindow& window)
+void tetrisGameManager::drawWell(sf::RenderWindow& window)
 {
     // This could be useful.
     /*switch(blockGrid[x][y])

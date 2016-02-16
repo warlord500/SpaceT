@@ -9,7 +9,7 @@ int main()
     return 0;
 }
 
-Game::Game() //: screenRectSpaceInv(screenWidth / 2, 0, screenWidth, screenHeight), playMan(images,screenRectSpaceInv)
+Game::Game() : tetrisManager(screenHeight, screenWidth)
 {
 	window.create(sf::VideoMode(screenWidth, screenHeight), "Space Tetris");
 	//if(!images.addAllCommonTextures())
@@ -47,8 +47,7 @@ void Game::gameLoop()
         // Clear screen
         window.clear(sf::Color::Black);
 
-        // Draw tetris grid
-        //tetrisManager.updateGrid(window);
+
         // remove from code because playermanager will replace the need for it.
         //eneMan.update(window);
         //playMan.update(window,screenRectSpaceInv);

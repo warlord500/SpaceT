@@ -17,7 +17,7 @@ public:
 	void gameLoop();
 private:
 	sf::RenderWindow window;
-	//tetrisGameManager tetrisManager;
+	tetrisGameManager tetrisManager;
 	//spaceInvManager playMan;
     //textureManager images;
     //sf::FloatRect screenRectSpaceInv;
