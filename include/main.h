@@ -2,7 +2,9 @@
 #define MAIN_H
 
 #include <SFML/Graphics.hpp>
-#include <tetris/tetrisGameManager.h>
+#include <space_invaders/spaceInvManager.h>
+#include <space_invaders/textureManager.h>
+#include <tetris/TetrisManager.h>
 
 const int screenWidth = 1020;
 const int screenHeight = 696;
@@ -15,8 +17,10 @@ public:
 	void gameLoop();
 private:
 	sf::RenderWindow window;
-	tetrisGameManager gameManager;
+	tetrisGameManager tetrisManager;
+	spaceInvManager playMan;
     textureManager images;
+    sf::FloatRect screenRectSpaceInv;
 };
 
 #endif

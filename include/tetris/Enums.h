@@ -1,7 +1,8 @@
-#ifndef TETRISENUMS_HPP_INCLUDED
-#define TETRISENUMS_HPP_INCLUDED
-     /// the following enum uses the url below as refernce
-    /// http://mercurymasterpunk.ca/images/tetris.jpg
+#ifndef ENUMS_H
+#define ENUMS_H
+
+	// the following enum uses the url below as refernce
+    // http://mercurymasterpunk.ca/images/tetris.jpg
   enum class BlockShapes
     {
         I_shape,

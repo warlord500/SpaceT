@@ -1,26 +1,21 @@
 #include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-#include <space_invaders/textureManager.h>
-//#include <space_invaders/enemyManager.h>
-#include <space_invaders/spaceInvManager.h>
-#include <tetris/tetrisGameManager.h>
 #include <main.h>
 
 int main()
 {
     Game game;
     game.gameLoop();
-    return EXIT_SUCCESS;
+
+    return 0;
 }
 
-Game::Game()
+Game::Game() : screenRectSpaceInv(screenWidth / 2, 0, screenWidth, screenHeight), playMan(images,screenRectSpaceInv)
 {
 	window.create(sf::VideoMode(screenWidth, screenHeight), "Space Tetris");
 	if(!images.addAllCommonTextures())
         false; // Throw an exception or something
-	sf::FloatRect screenRectSpaceInv(tetrisGameManager::getTetrisGameSize().x,0,
-		screenWidth - tetrisGameManager::getTetrisGameSize().x,screenHeight);
-    spaceInvManager playMan(images,screenRectSpaceInv);
+
+
    // enemyManager eneMan(images,screenRectSpaceInv);
             //the size of screen playing in.)
 }
@@ -53,7 +48,7 @@ void Game::gameLoop()
         window.clear(sf::Color::Black);
 
         // Draw tetris grid
-        gameManager.updateGrid(window);
+        tetrisManager.updateGrid(window);
         // remove from code because playermanager will replace the need for it.
         //eneMan.update(window);
         playMan.update(window,screenRectSpaceInv);
