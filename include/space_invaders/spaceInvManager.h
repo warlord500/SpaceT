@@ -2,7 +2,7 @@
 #define PLAYERMANGER_H
 #include <space_invaders/player.h>
 #include <space_invaders/bullets/pBullet.hpp>
-#include <space_invaders/enemy.hpp>
+#include <space_invaders/enemy.h>
 #include <list>
 #include <chrono>
 class textureManager;

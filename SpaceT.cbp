@@ -15,16 +15,11 @@
 				<Compiler>
 					<Add option="-std=c++11" />
 					<Add option="-g" />
-					<Add directory="include" />
-					<Add directory="../../Desktop/SFML-2.3/include" />
-					<Add directory="../SFML-2.0/include" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-graphics-d" />
 					<Add library="sfml-window-d" />
 					<Add library="sfml-system-d" />
-					<Add directory="../Desktop/SFML-2.0/lib" />
-					<Add directory="../SFML-2.0/lib" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -34,7 +29,6 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -47,34 +41,29 @@
 		<Compiler>
 			<Add option="-std=c++11" />
 			<Add option="-Wall" />
-			<Add directory="../../Documents/SFML-2.2/include" />
+			<Add directory="include" />
 		</Compiler>
-		<Linker>
-			<Add directory="../../Documents/SFML-2.2/lib" />
-		</Linker>
 		<ExtraCommands>
 			<Add after="$(PROJECT_DIR)Update_Docs" />
 		</ExtraCommands>
 		<Unit filename="include/main.h" />
 		<Unit filename="include/space_invaders/bullet.h" />
 		<Unit filename="include/space_invaders/bullets/pBullet.hpp" />
-		<Unit filename="include/space_invaders/enemy.hpp" />
-		<Unit filename="include/space_invaders/enemyManager.h" />
+		<Unit filename="include/space_invaders/enemy.h" />
 		<Unit filename="include/space_invaders/player.h" />
-		<Unit filename="include/space_invaders/playerManager.hpp" />
+		<Unit filename="include/space_invaders/spaceInvManager.h" />
 		<Unit filename="include/space_invaders/textureManager.h" />
-		<Unit filename="include/tetrisEnums.hpp" />
-		<Unit filename="include/tetrisGameManager.h" />
-		<Unit filename="include/tetrisMovableShape.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="include/tetris/tetrisEnums.h" />
+		<Unit filename="include/tetris/tetrisGameManager.h" />
+		<Unit filename="include/tetris/tetrisMovableShape.h" />
+		<Unit filename="src/main.cpp" />
 		<Unit filename="src/space_invaders/bullet.cpp" />
 		<Unit filename="src/space_invaders/bullets/pBullet.cpp" />
 		<Unit filename="src/space_invaders/enemy.cpp" />
-		<Unit filename="src/space_invaders/enemyManager.cpp" />
 		<Unit filename="src/space_invaders/player.cpp" />
-		<Unit filename="src/space_invaders/playerManager.cpp" />
-		<Unit filename="src/tetrisGameManager.cpp" />
-		<Unit filename="src/tetrisMovableShape.cpp" />
+		<Unit filename="src/space_invaders/spaceInvManager.cpp" />
+		<Unit filename="src/tetris/tetrisGameManager.cpp" />
+		<Unit filename="src/tetris/tetrisMovableShape.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

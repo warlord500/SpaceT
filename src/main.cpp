@@ -1,38 +1,37 @@
-#include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/Window/Event.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
 #include <space_invaders/textureManager.h>
 //#include <space_invaders/enemyManager.h>
-#include <space_invaders/spaceInvManager.hpp>
-#include "tetrisGameManager.h"
-#include "main.h"
-/*
-    File: main
-        contains the main loop.
-
-        this is the file to start  looking at this file
-        before editing anything.
-
-    Depends on:
-        <tetrisGameManager>
-        <globals>
-*/
+#include <space_invaders/spaceInvManager.h>
+#include <tetris/tetrisGameManager.h>
+#include <main.h>
 
 int main()
 {
-    // Create the main window
-    sf::RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "Space Tetris");
-    tetrisGameManager gameManager;
+    Game game;
+    game.gameLoop();
+    return EXIT_SUCCESS;
+}
 
-    textureManager images;
-
-    if(!images.addAllCommonTextures())
-        return 255;
-    sf::FloatRect screenRectSpaceInv(tetrisGameManager::getTetrisGameSize().x,0,
-            screenWidth - tetrisGameManager::getTetrisGameSize().x,screenHeight);
+Game::Game()
+{
+	window.create(sf::VideoMode(screenWidth, screenHeight), "Space Tetris");
+	if(!images.addAllCommonTextures())
+        false; // Throw an exception or something
+	sf::FloatRect screenRectSpaceInv(tetrisGameManager::getTetrisGameSize().x,0,
+		screenWidth - tetrisGameManager::getTetrisGameSize().x,screenHeight);
     spaceInvManager playMan(images,screenRectSpaceInv);
    // enemyManager eneMan(images,screenRectSpaceInv);
             //the size of screen playing in.)
+}
 
+Game::~Game()
+{
+
+}
+
+void Game::gameLoop()
+{
     while (window.isOpen())
     {
         // Process events
@@ -61,6 +60,4 @@ int main()
         // Update the window
         window.display();
     }
-
-    return EXIT_SUCCESS;
 }

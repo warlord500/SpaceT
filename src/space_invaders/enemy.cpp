@@ -1,4 +1,4 @@
-#include "space_invaders/enemy.hpp"
+#include "space_invaders/enemy.h"
 const float passiveMoving = 1.0f;
 const float rangePassiveMov = 100.0f;
 

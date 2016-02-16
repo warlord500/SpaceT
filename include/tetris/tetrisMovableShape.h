@@ -2,7 +2,7 @@
 #define TETRISMOVABLESHAPE_H
 #include <array>
 #include <chrono>
-#include <tetrisEnums.hpp>
+#include <tetris/tetrisEnums.h>
 class tetrisGameManager;
 /*
     class: tetrisMovableShape

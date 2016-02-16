@@ -1,4 +1,4 @@
-#include "space_invaders/spaceInvManager.hpp"
+#include <space_invaders/spaceInvManager.h>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Keyboard.hpp>
 #include "main.h"

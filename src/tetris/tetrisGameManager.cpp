@@ -1,8 +1,8 @@
-#include "tetrisGameManager.h"
+#include <tetris/tetrisGameManager.h>
 #include  <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include "main.h"
-#include <tetrisEnums.hpp>
+#include <tetris/tetrisEnums.h>
 /**
     this file is in major need of reformatting
     it has broken two major guidelines
