@@ -17,10 +17,10 @@ public:
 	void gameLoop();
 private:
 	sf::RenderWindow window;
-	tetrisGameManager tetrisManager;
-	spaceInvManager playMan;
-    textureManager images;
-    sf::FloatRect screenRectSpaceInv;
+	//tetrisGameManager tetrisManager;
+	//spaceInvManager playMan;
+    //textureManager images;
+    //sf::FloatRect screenRectSpaceInv;
 };
 
 #endif
