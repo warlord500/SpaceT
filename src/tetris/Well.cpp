@@ -28,7 +28,7 @@ bool Well::tetriminoFit(const Tetrimino willItFit) const
 					|| tempLocation.col + x < 0))
 				doesFit = false;
 			// Tests to see if there is already a block occupying the target square
-			if (tempGrid[y][x] == 1 && board[tempLocation.row + y][tempLocation.col + x] != ' ')
+			if (tempGrid[y][x] == 1 && board[tempLocation.row + y][tempLocation.col + x] != Empty)
 				doesFit = false;
 		}
 	}

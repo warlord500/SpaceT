@@ -30,9 +30,8 @@ private:
     Well gameBoard;
     bool tetriminoIsInPlay;
 
-    void drawWell(sf::RenderWindow& window, Well toBeDrawn);
-    void drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn);
-    bool checkLoseCondition();
+    void drawWell(sf::RenderWindow& window, Well toBeDrawn) const;
+    void drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn) const;
 public:
     tetrisGameManager(int windowHeight, int windowWidth);
     void playTetris(sf::RenderWindow& window, TetrisButtons buttons);

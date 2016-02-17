@@ -1,18 +1,14 @@
 #include <tetris/TetrisManager.h>
 #include <SFML/Graphics.hpp>
 #include <tetris/Enums.h>
+#include <iostream>
 
 tetrisGameManager::tetrisGameManager(int windowHeight, int windowWidth) : WINDOW_HEIGHT(windowHeight), WINDOW_WIDTH(windowWidth)
 {
     tetriminoIsInPlay = false;
 }
 
-bool  tetrisGameManager::checkLoseCondition()
-{
-    return gameBoard.topReached();
-}
-
-void tetrisGameManager::drawWell(sf::RenderWindow& window, Well toBeDrawn)
+void tetrisGameManager::drawWell(sf::RenderWindow& window, Well toBeDrawn) const
 {
     sf::RectangleShape block;
     block.setSize(sf::Vector2f(BLOCK_SIZE_PIXELS - BORDER_THICKNESS_PIXELS * 2, BLOCK_SIZE_PIXELS - BORDER_THICKNESS_PIXELS * 2));
@@ -65,7 +61,7 @@ void tetrisGameManager::drawWell(sf::RenderWindow& window, Well toBeDrawn)
     }
 }
 
-void tetrisGameManager::drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn)
+void tetrisGameManager::drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn) const
 {
     sf::RectangleShape block;
     switch(toBeDrawn.getColor())
@@ -129,37 +125,60 @@ void tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisButtons butto
         tetriminoIsInPlay = true;
     }
 
+    bool isStuck = false;
     if(buttons.quickDrop)
     {
-
+		do
+		{
+			tetriminoInPlay->moveDown();
+		}
+		while(gameBoard.tetriminoFit(*tetriminoInPlay));
+		tetriminoInPlay->moveUp();
+		gameBoard.addTetriminoToWell(*tetriminoInPlay);
+		isStuck = true;
     }
-    else
+    else if(buttons.drop)
+	{
+		tetriminoInPlay->moveDown();
+		if(!gameBoard.tetriminoFit(*tetriminoInPlay))
+		{
+			tetriminoInPlay->moveUp();
+			gameBoard.addTetriminoToWell(*tetriminoInPlay);
+			isStuck = true;
+		}
+	}
+    if(!isStuck)
     {
     	if(buttons.moveLeft)
 		{
-
+			tetriminoInPlay->moveLeft();
+			if(!gameBoard.tetriminoFit(*tetriminoInPlay))
+				tetriminoInPlay->moveRight();
 		}
-        if(buttons.moveLeft)
-        {
-
-        }
         else if(buttons.moveRight)
         {
-
+			tetriminoInPlay->moveRight();
+			if(!gameBoard.tetriminoFit(*tetriminoInPlay))
+				tetriminoInPlay->moveLeft();
         }
         if(buttons.rotateRight)
         {
-
+			tetriminoInPlay->rotateRight();
+			if(!gameBoard.tetriminoFit(*tetriminoInPlay))
+				tetriminoInPlay->rotateLeft();
         }
         else if(buttons.rotateLeft)
         {
-
+			tetriminoInPlay->rotateLeft();
+			if(!gameBoard.tetriminoFit(*tetriminoInPlay))
+				tetriminoInPlay->rotateRight();
         }
     }
 
 
     drawTetrimino(window, *tetriminoInPlay);
-    if(true) //condition for tetrimino has been put in well
+    drawWell(window, gameBoard);
+    if(isStuck)
     {
         delete tetriminoInPlay;
         tetriminoIsInPlay = false;

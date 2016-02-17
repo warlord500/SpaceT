@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <main.h>
+#include <iostream>
 
 int main()
 {
@@ -50,9 +51,7 @@ void Game::gameLoop()
 		tetrisButtons.drop = sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
 		tetrisButtons.quickDrop = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
 
-        // Clear screen
         window.clear(sf::Color::Cyan);
-
 		tetrisManager.playTetris(window, tetrisButtons);
 
         // remove from code because playermanager will replace the need for it.
