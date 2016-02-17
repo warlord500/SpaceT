@@ -51,7 +51,7 @@ void Game::gameLoop()
 		tetrisButtons.quickDrop = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
 
         // Clear screen
-        window.clear(sf::Color::Black);
+        window.clear(sf::Color::Cyan);
 
 		tetrisManager.playTetris(window, tetrisButtons);
 

@@ -23,14 +23,15 @@ private:
     const int WINDOW_WIDTH;
     const static int TETRIS_BOARD_TOP = 10;
     const static int TETRIS_BOARD_LEFT = 200;
-    const static int BLOCK_SIZE_PIXELS = 20;
+    const static int BLOCK_SIZE_PIXELS = 36;
     const static int BORDER_THICKNESS_PIXELS = 5;
 
     Tetrimino* tetriminoInPlay;
     Well gameBoard;
+    bool tetriminoIsInPlay;
+
     void drawWell(sf::RenderWindow& window, Well toBeDrawn);
     void drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn);
-    int clearLines();
     bool checkLoseCondition();
 public:
     tetrisGameManager(int windowHeight, int windowWidth);
