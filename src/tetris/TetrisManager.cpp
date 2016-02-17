@@ -1,6 +1,5 @@
 #include <tetris/TetrisManager.h>
-#include <SFML/Graphics/RectangleShape.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics.hpp>
 #include <tetris/Enums.h>
 
 tetrisGameManager::tetrisGameManager(int windowHeight, int windowWidth) : WINDOW_HEIGHT(windowHeight), WINDOW_WIDTH(windowWidth)
@@ -8,10 +7,10 @@ tetrisGameManager::tetrisGameManager(int windowHeight, int windowWidth) : WINDOW
 
 }
 
-void tetrisGameManager::checkLines()
+int tetrisGameManager::clearLines()
 {
 
-
+	return 0;
 }
 
 bool  tetrisGameManager::checkLoseCondition()
@@ -20,86 +19,116 @@ bool  tetrisGameManager::checkLoseCondition()
     return false;
 }
 
-void tetrisGameManager::drawWell(sf::RenderWindow& window)
+void tetrisGameManager::drawWell(sf::RenderWindow& window, Well toBeDrawn)
 {
-    // This could be useful.
-    /*switch(blockGrid[x][y])
-    {
-    case Empty:
-        block.setFillColor(sf::Color::Black);
-        block.setOutlineColor(sf::Color::Black);
-        break;
-    case Cyan:
-        block.setFillColor(sf::Color::Cyan);
-        block.setOutlineColor(sf::Color(96, 216, 220, 255));
-        break;
-    case Yellow:
-        block.setFillColor(sf::Color::Yellow);
-        block.setOutlineColor(sf::Color(222, 222, 79, 255));
-        break;
-    case Orange:
-        block.setFillColor(sf::Color(255, 166, 31, 255));
-        block.setOutlineColor(sf::Color(192, 124, 22, 255));
-        break;
-    case Blue:
-        block.setFillColor(sf::Color::Blue);
-        block.setOutlineColor(sf::Color(23, 19, 138, 255));
-        break;
-    case Green:
-        block.setFillColor(sf::Color::Green);
-        block.setOutlineColor(sf::Color(42, 183, 37, 255));
-        break;
-    case Red:
-        block.setFillColor(sf::Color::Red);
-        block.setOutlineColor(sf::Color(195, 25, 30, 255));
-        break;
-    case Purple:
-        block.setFillColor(sf::Color(239, 68, 245, 255));
-        block.setOutlineColor(sf::Color(181, 69, 195, 255));
-        break;
-    }*/
+	sf::RectangleShape block;
+	block.setSize(sf::Vector2f(BLOCK_SIZE_PIXELS, BLOCK_SIZE_PIXELS));
+	sf::Vector2f pixelPosition(TETRIS_BOARD_LEFT, TETRIS_BOARD_TOP);
+	BlockColors wellBoard[BOARD_HEIGHT][BOARD_WIDTH];
+	toBeDrawn.getBoard(wellBoard);
+
+	for (int y = 0; y < BOARD_HEIGHT; y++)
+	{
+		for (int x = 0; x < BOARD_WIDTH; x++)
+		{
+			if (wellBoard[y][x] != Empty)
+			{
+				block.setPosition(pixelPosition + sf::Vector2f(x * BLOCK_SIZE_PIXELS, y * BLOCK_SIZE_PIXELS));
+				switch(wellBoard[y][x])
+				{
+				case Cyan:
+					block.setFillColor(sf::Color::Cyan);
+					block.setOutlineColor(sf::Color(96, 216, 220));
+					break;
+				case Yellow:
+					block.setFillColor(sf::Color::Yellow);
+					block.setOutlineColor(sf::Color(222, 222, 79));
+					break;
+				case Orange:
+					block.setFillColor(sf::Color(255, 166, 31));
+					block.setOutlineColor(sf::Color(192, 124, 22));
+					break;
+				case Blue:
+					block.setFillColor(sf::Color::Blue);
+					block.setOutlineColor(sf::Color(23, 19, 138));
+					break;
+				case Green:
+					block.setFillColor(sf::Color::Green);
+					block.setOutlineColor(sf::Color(42, 183, 37));
+					break;
+				case Red:
+					block.setFillColor(sf::Color::Red);
+					block.setOutlineColor(sf::Color(195, 25, 30));
+					break;
+				case Purple:
+					block.setFillColor(sf::Color(239, 68, 245));
+					block.setOutlineColor(sf::Color(181, 69, 195));
+					break;
+				}
+				window.draw(block);
+			}
+		}
+	}
 }
 
-void tetrisGameManager::drawTetrimino(sf::RenderWindow& window)
+void tetrisGameManager::drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn)
 {
-    switch(blockGrid[x][y])
+	sf::RectangleShape block;
+    switch(toBeDrawn.getColor())
     {
-    case Empty:
-        block.setFillColor(sf::Color::Black);
-        block.setOutlineColor(sf::Color::Black);
-        break;
     case Cyan:
         block.setFillColor(sf::Color::Cyan);
-        block.setOutlineColor(sf::Color(96, 216, 220, 255));
+        block.setOutlineColor(sf::Color(96, 216, 220));
         break;
     case Yellow:
         block.setFillColor(sf::Color::Yellow);
-        block.setOutlineColor(sf::Color(222, 222, 79, 255));
+        block.setOutlineColor(sf::Color(222, 222, 79));
         break;
     case Orange:
-        block.setFillColor(sf::Color(255, 166, 31, 255));
-        block.setOutlineColor(sf::Color(192, 124, 22, 255));
+        block.setFillColor(sf::Color(255, 166, 31));
+        block.setOutlineColor(sf::Color(192, 124, 22));
         break;
     case Blue:
         block.setFillColor(sf::Color::Blue);
-        block.setOutlineColor(sf::Color(23, 19, 138, 255));
+        block.setOutlineColor(sf::Color(23, 19, 138));
         break;
     case Green:
         block.setFillColor(sf::Color::Green);
-        block.setOutlineColor(sf::Color(42, 183, 37, 255));
+        block.setOutlineColor(sf::Color(42, 183, 37));
         break;
     case Red:
         block.setFillColor(sf::Color::Red);
-        block.setOutlineColor(sf::Color(195, 25, 30, 255));
+        block.setOutlineColor(sf::Color(195, 25, 30));
         break;
     case Purple:
-        block.setFillColor(sf::Color(239, 68, 245, 255));
-        block.setOutlineColor(sf::Color(181, 69, 195, 255));
+        block.setFillColor(sf::Color(239, 68, 245));
+        block.setOutlineColor(sf::Color(181, 69, 195));
         break;
     }
+
+	block.setSize(sf::Vector2f(BLOCK_SIZE_PIXELS, BLOCK_SIZE_PIXELS));
+	tetriminoLocation position = toBeDrawn.getLocation();
+	sf::Vector2f pixelPosition;
+	int tetriminoGrid[TETRIMINO_GRID_SIZE][TETRIMINO_GRID_SIZE];
+	toBeDrawn.getGrid(tetriminoGrid);
+
+	// Sets the initial pixel location to be the top left of the Tetrimino grid.
+	pixelPosition.x = TETRIS_BOARD_LEFT + position.col * BLOCK_SIZE_PIXELS;
+	pixelPosition.y = TETRIS_BOARD_TOP + position.row * BLOCK_SIZE_PIXELS;
+
+	for (int y = 0; y < TETRIMINO_GRID_SIZE; y++)
+		for (int x = 0; x < TETRIMINO_GRID_SIZE; x++)
+			if (tetriminoGrid[y][x] == 1)
+			{
+				block.setPosition(pixelPosition + sf::Vector2f(x * BLOCK_SIZE_PIXELS, y * BLOCK_SIZE_PIXELS));
+				window.draw(block);
+			}
 }
 
-void tetrisGameManager::updateGrid(sf::RenderWindow& window)
+void tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisButtons buttons)
 {
-
+	tetriminoInPlay = new Tetrimino(L_shape);
+    tetriminoInPlay->setLocation(5, 4);
+    drawTetrimino(window, *tetriminoInPlay);
+    delete tetriminoInPlay;
 }

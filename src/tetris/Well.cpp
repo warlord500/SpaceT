@@ -74,7 +74,7 @@ bool Well::rowIsFull(int row)
 
 void Well::moveRowsDown(int firstRowToMove)
 {
-	for (firstRowToMove; firstRowToMove >= 0; firstRowToMove--)
+	for (;firstRowToMove >= 0; firstRowToMove--)
 	{
 		for (int col = 0; col < width; col++)
 			board[firstRowToMove + 1][col] = board[firstRowToMove][col];

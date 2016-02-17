@@ -4,6 +4,17 @@
 #include <SFML/Graphics.hpp>
 #include <tetris/Enums.h>
 #include <tetris/Tetrimino.h>
+#include <tetris/Well.h>
+
+struct TetrisButtons
+{
+	bool moveLeft;
+	bool moveRight;
+	bool rotateRight;
+	bool rotateLeft;
+	bool drop;
+	bool quickDrop;
+};
 
 class tetrisGameManager
 {
@@ -15,14 +26,15 @@ private:
     const static int BLOCK_SIZE_PIXELS = 20;
     const static int BORDER_THICKNESS_PIXELS = 5;
 
-    Tetrimino tetriminoInPlay;
-    void drawWell(sf::RenderWindow& window);
-    void drawTetrimino(sf::RenderWindow& window);
-    void checkLines();
+    Tetrimino* tetriminoInPlay;
+    Well gameBoard;
+    void drawWell(sf::RenderWindow& window, Well toBeDrawn);
+    void drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn);
+    int clearLines();
     bool checkLoseCondition();
 public:
     tetrisGameManager(int windowHeight, int windowWidth);
-    void updateGrid(sf::RenderWindow& window);
+    void playTetris(sf::RenderWindow& window, TetrisButtons buttons);
 };
 
 #endif // TETRISGAMEMANAGER_H

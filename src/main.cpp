@@ -35,18 +35,25 @@ void Game::gameLoop()
         {
             // Close window : exit
             switch(event.type)
-                {
-                case sf::Event::Closed:
-                    window.close();
-                    break;
-                default:
-                    break;
-                }
+			{
+			case sf::Event::Closed:
+				window.close();
+				break;
+			}
         }
+
+		// Collects data on the buttons pressed and reports to the Tetris manager
+		tetrisButtons.moveLeft = sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
+		tetrisButtons.moveRight = sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
+		tetrisButtons.rotateRight = sf::Keyboard::isKeyPressed(sf::Keyboard::X);
+		tetrisButtons.rotateLeft = sf::Keyboard::isKeyPressed(sf::Keyboard::Z);
+		tetrisButtons.drop = sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
+		tetrisButtons.quickDrop = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
 
         // Clear screen
         window.clear(sf::Color::Black);
 
+		tetrisManager.playTetris(window, tetrisButtons);
 
         // remove from code because playermanager will replace the need for it.
         //eneMan.update(window);

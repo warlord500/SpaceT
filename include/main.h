@@ -18,6 +18,7 @@ public:
 private:
 	sf::RenderWindow window;
 	tetrisGameManager tetrisManager;
+	TetrisButtons tetrisButtons;
 	//spaceInvManager playMan;
     //textureManager images;
     //sf::FloatRect screenRectSpaceInv;
