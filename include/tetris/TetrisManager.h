@@ -23,8 +23,8 @@ private:
     const int WINDOW_WIDTH;
     const static int TETRIS_BOARD_TOP = 10;
     const static int TETRIS_BOARD_LEFT = 200;
-    const static int BLOCK_SIZE_PIXELS = 36;
-    const static int BORDER_THICKNESS_PIXELS = 5;
+    const static int BLOCK_SIZE_PIXELS = 20;
+    const static int BORDER_THICKNESS_PIXELS = 2;
     const static int BUTTON_HOLD_DELAY = 250; // In milliseconds
 
     Tetrimino* tetriminoInPlay;

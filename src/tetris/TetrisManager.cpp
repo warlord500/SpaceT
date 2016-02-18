@@ -149,7 +149,7 @@ void tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisButtons butto
 {
     if(!tetriminoIsInPlay)
     {
-        tetriminoInPlay = new Tetrimino(L_shape);
+        tetriminoInPlay = new Tetrimino(random_shape);
         tetriminoInPlay->setLocation(0, 4);
         tetriminoIsInPlay = true;
     }
@@ -206,6 +206,7 @@ void tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisButtons butto
 				tetriminoInPlay->rotateRight();
         }
     }
+    gameBoard.clearFullRows();
 
     drawTetrimino(window, *tetriminoInPlay);
     drawWell(window, gameBoard);

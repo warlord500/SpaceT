@@ -67,7 +67,7 @@ bool Well::rowIsFull(int row)
 {
 	bool rowFull = true;
 	for (int col = 0; col < width; col++)
-		if (board[row][col] == ' ')
+		if (board[row][col] == Empty)
 			rowFull = false;
 	return rowFull;
 }
