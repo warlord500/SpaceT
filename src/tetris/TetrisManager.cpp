@@ -152,6 +152,7 @@ void tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisButtons butto
         tetriminoInPlay = new Tetrimino(random_shape);
         tetriminoInPlay->setLocation(0, 4);
         tetriminoIsInPlay = true;
+        autoDropTimer.restart();
     }
 
 	manageButtonDelays(buttons);
@@ -168,8 +169,9 @@ void tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisButtons butto
 		tetriminoInPlay->moveUp();
 		gameBoard.addTetriminoToWell(*tetriminoInPlay);
 		isStuck = true;
+		autoDropTimer.restart();
     }
-    else if(buttons.drop)
+    else if(buttons.drop || autoDropTimer.getElapsedTime().asMilliseconds() >= AUTO_DROP_TIMER)
 	{
 		tetriminoInPlay->moveDown();
 		if(!gameBoard.tetriminoFit(*tetriminoInPlay))
@@ -178,6 +180,7 @@ void tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisButtons butto
 			gameBoard.addTetriminoToWell(*tetriminoInPlay);
 			isStuck = true;
 		}
+		autoDropTimer.restart();
 	}
     if(!isStuck)
     {

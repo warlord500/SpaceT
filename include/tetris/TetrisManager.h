@@ -26,6 +26,7 @@ private:
     const static int BLOCK_SIZE_PIXELS = 20;
     const static int BORDER_THICKNESS_PIXELS = 2;
     const static int BUTTON_HOLD_DELAY = 250; // In milliseconds
+    const static int AUTO_DROP_TIMER = 1000; // In milliseconds
 
     Tetrimino* tetriminoInPlay;
     Well gameBoard;
@@ -38,6 +39,7 @@ private:
     sf::Clock rotateLeftTimer;
     sf::Clock dropTimer;
     sf::Clock quickDropTimer;
+    sf::Clock autoDropTimer;
 
     void drawWell(sf::RenderWindow& window, Well toBeDrawn) const;
     void drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn) const;
