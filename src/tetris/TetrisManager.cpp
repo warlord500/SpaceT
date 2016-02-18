@@ -6,6 +6,12 @@
 tetrisGameManager::tetrisGameManager(int windowHeight, int windowWidth) : WINDOW_HEIGHT(windowHeight), WINDOW_WIDTH(windowWidth)
 {
     tetriminoIsInPlay = false;
+    wasPressed.moveLeft = false;
+    wasPressed.moveRight = false;
+    wasPressed.rotateRight = false;
+    wasPressed.rotateLeft = false;
+    wasPressed.drop = false;
+    wasPressed.quickDrop = false;
 }
 
 void tetrisGameManager::drawWell(sf::RenderWindow& window, Well toBeDrawn) const
@@ -116,6 +122,29 @@ void tetrisGameManager::drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDr
             }
 }
 
+bool tetrisGameManager::manageButtonDelay(sf::Clock& timer, const bool isPressed, bool& wasPressed)
+{
+	if(isPressed && (!wasPressed || timer.getElapsedTime().asMilliseconds() >= BUTTON_HOLD_DELAY))
+	{
+		timer.restart();
+		wasPressed = true;
+		return true;
+	}
+	if(!isPressed)
+		wasPressed = false;
+	return false;
+}
+
+void tetrisGameManager::manageButtonDelays(TetrisButtons& rawButtons)
+{
+	rawButtons.moveLeft = manageButtonDelay(moveLeftTimer, rawButtons.moveLeft, wasPressed.moveLeft);
+	rawButtons.moveRight = manageButtonDelay(moveRightTimer, rawButtons.moveRight, wasPressed.moveRight);
+	rawButtons.rotateRight = manageButtonDelay(rotateRightTimer, rawButtons.rotateRight, wasPressed.rotateRight);
+	rawButtons.rotateLeft = manageButtonDelay(rotateLeftTimer, rawButtons.rotateLeft, wasPressed.rotateLeft);
+	rawButtons.drop = manageButtonDelay(dropTimer, rawButtons.drop, wasPressed.drop);
+	rawButtons.quickDrop = manageButtonDelay(quickDropTimer, rawButtons.quickDrop, wasPressed.quickDrop);
+}
+
 void tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisButtons buttons)
 {
     if(!tetriminoIsInPlay)
@@ -125,6 +154,9 @@ void tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisButtons butto
         tetriminoIsInPlay = true;
     }
 
+	manageButtonDelays(buttons);
+
+	// Take actions based on input
     bool isStuck = false;
     if(buttons.quickDrop)
     {
@@ -174,7 +206,6 @@ void tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisButtons butto
 				tetriminoInPlay->rotateRight();
         }
     }
-
 
     drawTetrimino(window, *tetriminoInPlay);
     drawWell(window, gameBoard);

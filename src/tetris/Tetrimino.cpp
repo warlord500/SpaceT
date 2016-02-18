@@ -13,7 +13,7 @@ Tetrimino::Tetrimino(BlockShapes type)
 		for(int y = 0; y < TETRIMINO_GRID_SIZE; y++)
 			grid[x][y] = 0;
 
-	if(type == random)
+	if(type == random_shape)
 		type = static_cast<BlockShapes>(getRandomNumber(1, 6));
 
 	// I've chosen to use a co-ordinate plane for the grid with

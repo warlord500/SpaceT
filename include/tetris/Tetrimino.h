@@ -15,7 +15,7 @@ class Tetrimino
 {
 public:
 	// The ‘type’ parameter will determine which piece we initialize grid to
-	Tetrimino(BlockShapes type = random);
+	Tetrimino(BlockShapes type = random_shape);
 
 	BlockColors getColor() const;
 	tetriminoLocation getLocation() const;

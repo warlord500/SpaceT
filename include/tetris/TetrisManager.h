@@ -25,13 +25,24 @@ private:
     const static int TETRIS_BOARD_LEFT = 200;
     const static int BLOCK_SIZE_PIXELS = 36;
     const static int BORDER_THICKNESS_PIXELS = 5;
+    const static int BUTTON_HOLD_DELAY = 250; // In milliseconds
 
     Tetrimino* tetriminoInPlay;
     Well gameBoard;
     bool tetriminoIsInPlay;
 
+	TetrisButtons wasPressed;
+    sf::Clock moveLeftTimer;
+    sf::Clock moveRightTimer;
+    sf::Clock rotateRightTimer;
+    sf::Clock rotateLeftTimer;
+    sf::Clock dropTimer;
+    sf::Clock quickDropTimer;
+
     void drawWell(sf::RenderWindow& window, Well toBeDrawn) const;
     void drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn) const;
+    bool manageButtonDelay(sf::Clock& timer, const bool isPressed, bool& wasPressed);
+    void manageButtonDelays(TetrisButtons& rawButtons);
 public:
     tetrisGameManager(int windowHeight, int windowWidth);
     void playTetris(sf::RenderWindow& window, TetrisButtons buttons);
