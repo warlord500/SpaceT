@@ -14,7 +14,42 @@ tetrisGameManager::tetrisGameManager(int windowHeight, int windowWidth) : WINDOW
     wasPressed.quickDrop = false;
 }
 
-void tetrisGameManager::drawWell(sf::RenderWindow& window, Well toBeDrawn) const
+void tetrisGameManager::setSfmlColors(sf::RectangleShape& toBeColored, const BlockColors color)
+{
+    switch(color)
+    {
+    case Cyan:
+        toBeColored.setFillColor(sf::Color::Cyan);
+        toBeColored.setOutlineColor(sf::Color(96, 216, 220));
+        break;
+    case Yellow:
+        toBeColored.setFillColor(sf::Color::Yellow);
+        toBeColored.setOutlineColor(sf::Color(222, 222, 79));
+        break;
+    case Orange:
+        toBeColored.setFillColor(sf::Color(255, 166, 31));
+        toBeColored.setOutlineColor(sf::Color(192, 124, 22));
+        break;
+    case Blue:
+        toBeColored.setFillColor(sf::Color::Blue);
+        toBeColored.setOutlineColor(sf::Color(23, 19, 138));
+        break;
+    case Green:
+        toBeColored.setFillColor(sf::Color::Green);
+        toBeColored.setOutlineColor(sf::Color(42, 183, 37));
+        break;
+    case Red:
+        toBeColored.setFillColor(sf::Color::Red);
+        toBeColored.setOutlineColor(sf::Color(195, 25, 30));
+        break;
+    case Purple:
+        toBeColored.setFillColor(sf::Color(239, 68, 245));
+        toBeColored.setOutlineColor(sf::Color(181, 69, 195));
+        break;
+    }
+}
+
+void tetrisGameManager::drawWell(sf::RenderWindow& window, Well toBeDrawn)
 {
     sf::RectangleShape block;
     block.setSize(sf::Vector2f(BLOCK_SIZE_PIXELS - BORDER_THICKNESS_PIXELS * 2, BLOCK_SIZE_PIXELS - BORDER_THICKNESS_PIXELS * 2));
@@ -30,78 +65,17 @@ void tetrisGameManager::drawWell(sf::RenderWindow& window, Well toBeDrawn) const
             if (wellBoard[y][x] != Empty)
             {
                 block.setPosition(pixelPosition + sf::Vector2f(x * BLOCK_SIZE_PIXELS + BORDER_THICKNESS_PIXELS, y * BLOCK_SIZE_PIXELS + BORDER_THICKNESS_PIXELS));
-                switch(wellBoard[y][x])
-                {
-                case Cyan:
-                    block.setFillColor(sf::Color::Cyan);
-                    block.setOutlineColor(sf::Color(96, 216, 220));
-                    break;
-                case Yellow:
-                    block.setFillColor(sf::Color::Yellow);
-                    block.setOutlineColor(sf::Color(222, 222, 79));
-                    break;
-                case Orange:
-                    block.setFillColor(sf::Color(255, 166, 31));
-                    block.setOutlineColor(sf::Color(192, 124, 22));
-                    break;
-                case Blue:
-                    block.setFillColor(sf::Color::Blue);
-                    block.setOutlineColor(sf::Color(23, 19, 138));
-                    break;
-                case Green:
-                    block.setFillColor(sf::Color::Green);
-                    block.setOutlineColor(sf::Color(42, 183, 37));
-                    break;
-                case Red:
-                    block.setFillColor(sf::Color::Red);
-                    block.setOutlineColor(sf::Color(195, 25, 30));
-                    break;
-                case Purple:
-                    block.setFillColor(sf::Color(239, 68, 245));
-                    block.setOutlineColor(sf::Color(181, 69, 195));
-                    break;
-                }
+                setSfmlColors(block, wellBoard[y][x]);
                 window.draw(block);
             }
         }
     }
 }
 
-void tetrisGameManager::drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn) const
+void tetrisGameManager::drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn)
 {
     sf::RectangleShape block;
-    switch(toBeDrawn.getColor())
-    {
-    case Cyan:
-        block.setFillColor(sf::Color::Cyan);
-        block.setOutlineColor(sf::Color(96, 216, 220));
-        break;
-    case Yellow:
-        block.setFillColor(sf::Color::Yellow);
-        block.setOutlineColor(sf::Color(222, 222, 79));
-        break;
-    case Orange:
-        block.setFillColor(sf::Color(255, 166, 31));
-        block.setOutlineColor(sf::Color(192, 124, 22));
-        break;
-    case Blue:
-        block.setFillColor(sf::Color::Blue);
-        block.setOutlineColor(sf::Color(23, 19, 138));
-        break;
-    case Green:
-        block.setFillColor(sf::Color::Green);
-        block.setOutlineColor(sf::Color(42, 183, 37));
-        break;
-    case Red:
-        block.setFillColor(sf::Color::Red);
-        block.setOutlineColor(sf::Color(195, 25, 30));
-        break;
-    case Purple:
-        block.setFillColor(sf::Color(239, 68, 245));
-        block.setOutlineColor(sf::Color(181, 69, 195));
-        break;
-    }
-
+    setSfmlColors(block, toBeDrawn.getColor());
     block.setSize(sf::Vector2f(BLOCK_SIZE_PIXELS - BORDER_THICKNESS_PIXELS * 2, BLOCK_SIZE_PIXELS - BORDER_THICKNESS_PIXELS * 2));
     block.setOutlineThickness(BORDER_THICKNESS_PIXELS);
     tetriminoLocation position = toBeDrawn.getLocation();
@@ -124,28 +98,28 @@ void tetrisGameManager::drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDr
 
 bool tetrisGameManager::manageButtonDelay(sf::Clock& timer, const bool isPressed, bool& wasPressed)
 {
-	if(isPressed && (!wasPressed || timer.getElapsedTime().asMilliseconds() >= BUTTON_HOLD_DELAY))
-	{
-		timer.restart();
-		wasPressed = true;
-		return true;
-	}
-	if(!isPressed)
-		wasPressed = false;
-	return false;
+    if(isPressed && (!wasPressed || timer.getElapsedTime().asMilliseconds() >= BUTTON_HOLD_DELAY))
+    {
+        timer.restart();
+        wasPressed = true;
+        return true;
+    }
+    if(!isPressed)
+        wasPressed = false;
+    return false;
 }
 
 void tetrisGameManager::manageButtonDelays(TetrisButtons& rawButtons)
 {
-	rawButtons.moveLeft = manageButtonDelay(moveLeftTimer, rawButtons.moveLeft, wasPressed.moveLeft);
-	rawButtons.moveRight = manageButtonDelay(moveRightTimer, rawButtons.moveRight, wasPressed.moveRight);
-	rawButtons.rotateRight = manageButtonDelay(rotateRightTimer, rawButtons.rotateRight, wasPressed.rotateRight);
-	rawButtons.rotateLeft = manageButtonDelay(rotateLeftTimer, rawButtons.rotateLeft, wasPressed.rotateLeft);
-	rawButtons.drop = manageButtonDelay(dropTimer, rawButtons.drop, wasPressed.drop);
-	rawButtons.quickDrop = manageButtonDelay(quickDropTimer, rawButtons.quickDrop, wasPressed.quickDrop);
+    rawButtons.moveLeft = manageButtonDelay(moveLeftTimer, rawButtons.moveLeft, wasPressed.moveLeft);
+    rawButtons.moveRight = manageButtonDelay(moveRightTimer, rawButtons.moveRight, wasPressed.moveRight);
+    rawButtons.rotateRight = manageButtonDelay(rotateRightTimer, rawButtons.rotateRight, wasPressed.rotateRight);
+    rawButtons.rotateLeft = manageButtonDelay(rotateLeftTimer, rawButtons.rotateLeft, wasPressed.rotateLeft);
+    rawButtons.drop = manageButtonDelay(dropTimer, rawButtons.drop, wasPressed.drop);
+    rawButtons.quickDrop = manageButtonDelay(quickDropTimer, rawButtons.quickDrop, wasPressed.quickDrop);
 }
 
-void tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisButtons buttons)
+TetrisOutputs tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisInputs inputs)
 {
     if(!tetriminoIsInPlay)
     {
@@ -155,58 +129,58 @@ void tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisButtons butto
         autoDropTimer.restart();
     }
 
-	manageButtonDelays(buttons);
+    manageButtonDelays(inputs.buttons);
 
-	// Take actions based on input
+    // Take actions based on input
     bool isStuck = false;
-    if(buttons.quickDrop)
+    if(inputs.buttons.quickDrop)
     {
-		do
-		{
-			tetriminoInPlay->moveDown();
-		}
-		while(gameBoard.tetriminoFit(*tetriminoInPlay));
-		tetriminoInPlay->moveUp();
-		gameBoard.addTetriminoToWell(*tetriminoInPlay);
-		isStuck = true;
-		autoDropTimer.restart();
+        do
+        {
+            tetriminoInPlay->moveDown();
+        }
+        while(gameBoard.tetriminoFit(*tetriminoInPlay));
+        tetriminoInPlay->moveUp();
+        gameBoard.addTetriminoToWell(*tetriminoInPlay);
+        isStuck = true;
+        autoDropTimer.restart();
     }
-    else if(buttons.drop || autoDropTimer.getElapsedTime().asMilliseconds() >= AUTO_DROP_TIMER)
-	{
-		tetriminoInPlay->moveDown();
-		if(!gameBoard.tetriminoFit(*tetriminoInPlay))
-		{
-			tetriminoInPlay->moveUp();
-			gameBoard.addTetriminoToWell(*tetriminoInPlay);
-			isStuck = true;
-		}
-		autoDropTimer.restart();
-	}
+    else if(inputs.buttons.drop || autoDropTimer.getElapsedTime().asMilliseconds() >= AUTO_DROP_TIMER)
+    {
+        tetriminoInPlay->moveDown();
+        if(!gameBoard.tetriminoFit(*tetriminoInPlay))
+        {
+            tetriminoInPlay->moveUp();
+            gameBoard.addTetriminoToWell(*tetriminoInPlay);
+            isStuck = true;
+        }
+        autoDropTimer.restart();
+    }
     if(!isStuck)
     {
-    	if(buttons.moveLeft)
-		{
-			tetriminoInPlay->moveLeft();
-			if(!gameBoard.tetriminoFit(*tetriminoInPlay))
-				tetriminoInPlay->moveRight();
-		}
-        else if(buttons.moveRight)
+        if(inputs.buttons.moveLeft)
         {
-			tetriminoInPlay->moveRight();
-			if(!gameBoard.tetriminoFit(*tetriminoInPlay))
-				tetriminoInPlay->moveLeft();
+            tetriminoInPlay->moveLeft();
+            if(!gameBoard.tetriminoFit(*tetriminoInPlay))
+                tetriminoInPlay->moveRight();
         }
-        if(buttons.rotateRight)
+        else if(inputs.buttons.moveRight)
         {
-			tetriminoInPlay->rotateRight();
-			if(!gameBoard.tetriminoFit(*tetriminoInPlay))
-				tetriminoInPlay->rotateLeft();
+            tetriminoInPlay->moveRight();
+            if(!gameBoard.tetriminoFit(*tetriminoInPlay))
+                tetriminoInPlay->moveLeft();
         }
-        else if(buttons.rotateLeft)
+        if(inputs.buttons.rotateRight)
         {
-			tetriminoInPlay->rotateLeft();
-			if(!gameBoard.tetriminoFit(*tetriminoInPlay))
-				tetriminoInPlay->rotateRight();
+            tetriminoInPlay->rotateRight();
+            if(!gameBoard.tetriminoFit(*tetriminoInPlay))
+                tetriminoInPlay->rotateLeft();
+        }
+        else if(inputs.buttons.rotateLeft)
+        {
+            tetriminoInPlay->rotateLeft();
+            if(!gameBoard.tetriminoFit(*tetriminoInPlay))
+                tetriminoInPlay->rotateRight();
         }
     }
     gameBoard.clearFullRows();

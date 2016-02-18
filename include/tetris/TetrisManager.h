@@ -16,6 +16,18 @@ struct TetrisButtons
 	bool quickDrop;
 };
 
+struct TetrisInputs
+{
+    TetrisButtons buttons;
+    // Add things here when we get around to
+    // linking the two games together
+};
+
+struct TetrisOutputs
+{
+
+};
+
 class tetrisGameManager
 {
 private:
@@ -41,13 +53,16 @@ private:
     sf::Clock quickDropTimer;
     sf::Clock autoDropTimer;
 
-    void drawWell(sf::RenderWindow& window, Well toBeDrawn) const;
-    void drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn) const;
+    TetrisOutputs tetrisOutputs;
+
+    void setSfmlColors(sf::RectangleShape& toBeColored, const BlockColors color);
+    void drawWell(sf::RenderWindow& window, Well toBeDrawn);
+    void drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn);
     bool manageButtonDelay(sf::Clock& timer, const bool isPressed, bool& wasPressed);
     void manageButtonDelays(TetrisButtons& rawButtons);
 public:
     tetrisGameManager(int windowHeight, int windowWidth);
-    void playTetris(sf::RenderWindow& window, TetrisButtons buttons);
+    TetrisOutputs playTetris(sf::RenderWindow& window, TetrisInputs inputs);
 };
 
 #endif // TETRISGAMEMANAGER_H
