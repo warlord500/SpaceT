@@ -5,7 +5,10 @@
 
 tetrisGameManager::tetrisGameManager(int windowHeight, int windowWidth) : WINDOW_HEIGHT(windowHeight), WINDOW_WIDTH(windowWidth)
 {
-    tetriminoIsInPlay = false;
+    tetriminoIsInPlay = true;
+    tetriminoInPlay = new Tetrimino(random_shape);
+    nextTetrimino = new Tetrimino(random_shape);
+
     wasPressed.moveLeft = false;
     wasPressed.moveRight = false;
     wasPressed.rotateRight = false;
@@ -124,7 +127,8 @@ TetrisOutputs tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisInpu
 {
     if(!tetriminoIsInPlay)
     {
-        tetriminoInPlay = new Tetrimino(random_shape);
+    	tetriminoInPlay = nextTetrimino;
+        nextTetrimino = new Tetrimino(random_shape);
         tetriminoInPlay->setLocation(0, 4);
         tetriminoIsInPlay = true;
         autoDropTimer.restart();

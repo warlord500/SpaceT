@@ -14,7 +14,7 @@ Tetrimino::Tetrimino(BlockShapes type)
 			grid[x][y] = 0;
 
 	if(type == random_shape)
-		type = static_cast<BlockShapes>(getRandomNumber(1, 6));
+		type = static_cast<BlockShapes>(getRandomNumber(1, 7));
 
 	// I've chosen to use a co-ordinate plane for the grid with
 	// the orgin (0,0) in the top-left corner, and so that the left indice refers

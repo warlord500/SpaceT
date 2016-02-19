@@ -41,6 +41,7 @@ private:
     const static int AUTO_DROP_TIMER = 1000; // In milliseconds
 
     Tetrimino* tetriminoInPlay;
+    Tetrimino* nextTetrimino;
     Well gameBoard;
     bool tetriminoIsInPlay;
 
