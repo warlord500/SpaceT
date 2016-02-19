@@ -18,6 +18,10 @@ void tetrisGameManager::setSfmlColors(sf::RectangleShape& toBeColored, const Blo
 {
     switch(color)
     {
+	case Empty:
+		toBeColored.setFillColor(sf::Color::White);
+		toBeColored.setOutlineColor(sf::Color::White);
+		break;
     case Cyan:
         toBeColored.setFillColor(sf::Color::Cyan);
         toBeColored.setOutlineColor(sf::Color(96, 216, 220));
@@ -62,12 +66,9 @@ void tetrisGameManager::drawWell(sf::RenderWindow& window, Well toBeDrawn)
     {
         for (int x = 0; x < BOARD_WIDTH; x++)
         {
-            if (wellBoard[y][x] != Empty)
-            {
-                block.setPosition(pixelPosition + sf::Vector2f(x * BLOCK_SIZE_PIXELS + BORDER_THICKNESS_PIXELS, y * BLOCK_SIZE_PIXELS + BORDER_THICKNESS_PIXELS));
-                setSfmlColors(block, wellBoard[y][x]);
-                window.draw(block);
-            }
+			block.setPosition(pixelPosition + sf::Vector2f(x * BLOCK_SIZE_PIXELS + BORDER_THICKNESS_PIXELS, y * BLOCK_SIZE_PIXELS + BORDER_THICKNESS_PIXELS));
+			setSfmlColors(block, wellBoard[y][x]);
+			window.draw(block);
         }
     }
 }
@@ -185,11 +186,12 @@ TetrisOutputs tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisInpu
     }
     gameBoard.clearFullRows();
 
+	drawWell(window, gameBoard);
     drawTetrimino(window, *tetriminoInPlay);
-    drawWell(window, gameBoard);
     if(isStuck)
     {
         delete tetriminoInPlay;
         tetriminoIsInPlay = false;
     }
+    return tetrisOutputs;
 }
