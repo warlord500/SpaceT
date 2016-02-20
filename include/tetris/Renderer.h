@@ -20,7 +20,7 @@ private:
 public:
 	Renderer(int windowHeight, int windowWidth);
 	void drawWell(sf::RenderWindow& window, Well toBeDrawn);
-    void drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn);
+    void drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn, bool isNextPiece = false);
 };
 
 #endif

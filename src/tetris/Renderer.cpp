@@ -73,7 +73,7 @@ void Renderer::drawWell(sf::RenderWindow& window, Well toBeDrawn)
     }
 }
 
-void Renderer::drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn)
+void Renderer::drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn, bool isNextPiece)
 {
     sf::RectangleShape block;
     setSfmlColors(block, toBeDrawn.getColor());
@@ -84,9 +84,13 @@ void Renderer::drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn)
     int tetriminoGrid[TETRIMINO_GRID_SIZE][TETRIMINO_GRID_SIZE];
     toBeDrawn.getGrid(tetriminoGrid);
 
-    // Sets the initial pixel location to be the top left of the Tetrimino grid.
-    pixelPosition.x = TETRIS_BOARD_LEFT + position.col * BLOCK_SIZE_PIXELS;
-    pixelPosition.y = TETRIS_BOARD_TOP + position.row * BLOCK_SIZE_PIXELS;
+	if(isNextPiece)
+		// Sets the initial pixel location to on the top of and to the right of the Well.
+		pixelPosition.x = TETRIS_BOARD_LEFT + (BOARD_WIDTH + 1) * BLOCK_SIZE_PIXELS;
+	else
+		// Sets the initial pixel location to be the top left of the Well.
+		pixelPosition.x = TETRIS_BOARD_LEFT + position.col * BLOCK_SIZE_PIXELS;
+	pixelPosition.y = TETRIS_BOARD_TOP + position.row * BLOCK_SIZE_PIXELS;
 
     for (int y = 0; y < TETRIMINO_GRID_SIZE; y++)
         for (int x = 0; x < TETRIMINO_GRID_SIZE; x++)

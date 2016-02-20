@@ -118,6 +118,7 @@ TetrisOutputs tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisInpu
 
 	renderer.drawWell(window, gameBoard);
     renderer.drawTetrimino(window, *tetriminoInPlay);
+    renderer.drawTetrimino(window, *nextTetrimino, true);
     if(isStuck)
     {
     	if(gameBoard.tetriminoInStaging(*tetriminoInPlay))
