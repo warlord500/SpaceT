@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <main.h>
 #include <iostream>
+#include <assert.h>
 
 int main()
 {
@@ -53,6 +54,7 @@ void Game::gameLoop()
 
         window.clear(sf::Color::Cyan);
 		tetrisOutputs = tetrisManager.playTetris(window, tetrisInputs);
+		assert(tetrisOutputs.gameOver == false);
 
         // remove from code because playermanager will replace the need for it.
         //eneMan.update(window);

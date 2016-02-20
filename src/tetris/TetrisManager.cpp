@@ -4,7 +4,7 @@
 #include <tetris/Enums.h>
 
 tetrisGameManager::tetrisGameManager(int windowHeight, int windowWidth)
-	: Renderer(windowHeight, windowWidth)
+	: renderer(windowHeight, windowWidth)
 {
     tetriminoIsInPlay = true;
     tetriminoInPlay = new Tetrimino(random_shape);
@@ -16,6 +16,16 @@ tetrisGameManager::tetrisGameManager(int windowHeight, int windowWidth)
     wasPressed.rotateLeft = false;
     wasPressed.drop = false;
     wasPressed.quickDrop = false;
+
+    tetrisOutputs.gameOver = false;
+
+    isStuck = false;
+}
+
+tetrisGameManager::~tetrisGameManager()
+{
+	delete tetriminoInPlay;
+	delete nextTetrimino;
 }
 
 bool tetrisGameManager::manageButtonDelay(sf::Clock& timer, const bool isPressed, bool& wasPressed)
@@ -47,14 +57,13 @@ TetrisOutputs tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisInpu
     {
     	tetriminoInPlay = nextTetrimino;
         nextTetrimino = new Tetrimino(random_shape);
-        tetriminoInPlay->setLocation(0, 4);
         tetriminoIsInPlay = true;
         autoDropTimer.restart();
+        isStuck = false;
     }
 
     manageButtonDelays(inputs.buttons);
 
-    bool isStuck = false;
     if(inputs.buttons.quickDrop)
     {
         do
@@ -107,12 +116,19 @@ TetrisOutputs tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisInpu
     }
     gameBoard.clearFullRows();
 
-	drawWell(window, gameBoard);
-    drawTetrimino(window, *tetriminoInPlay);
+	renderer.drawWell(window, gameBoard);
+    renderer.drawTetrimino(window, *tetriminoInPlay);
     if(isStuck)
     {
-        delete tetriminoInPlay;
-        tetriminoIsInPlay = false;
+    	if(gameBoard.tetriminoInStaging(*tetriminoInPlay))
+		{
+			tetrisOutputs.gameOver = true;
+		}
+		else
+		{
+			delete tetriminoInPlay;
+			tetriminoIsInPlay = false;
+		}
     }
     return tetrisOutputs;
 }

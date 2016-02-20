@@ -35,6 +35,18 @@ bool Well::tetriminoFit(const Tetrimino willItFit) const
 	return doesFit;
 }
 
+bool Well::tetriminoInStaging(const Tetrimino isItStaging) const
+{
+	int tempGrid[TETRIMINO_GRID_SIZE][TETRIMINO_GRID_SIZE];
+	isItStaging.getGrid(tempGrid);
+	tetriminoLocation tempLocation = isItStaging.getLocation();
+	for(int y = 0; y < TETRIMINO_GRID_SIZE; y++)
+		for(int x = 0; x < TETRIMINO_GRID_SIZE; x++)
+			if(tempLocation.row + y < 1)
+				return true;
+	return false;
+}
+
 void Well::addTetriminoToWell(const Tetrimino toBeAdded)
 {
 	int tempGrid[TETRIMINO_GRID_SIZE][TETRIMINO_GRID_SIZE];

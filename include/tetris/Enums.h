@@ -17,6 +17,7 @@ enum BlockShapes
 
 enum BlockColors
 {
+	Staging,
 	Empty,
 	Cyan,
 	Yellow,

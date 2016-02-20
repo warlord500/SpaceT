@@ -11,6 +11,10 @@ void Renderer::setSfmlColors(sf::RectangleShape& toBeColored, const BlockColors 
 {
     switch(color)
     {
+	case Staging:
+		toBeColored.setFillColor(sf::Color(192, 192, 192));
+		toBeColored.setOutlineColor(sf::Color(192, 192, 192));
+		break;
 	case Empty:
 		toBeColored.setFillColor(sf::Color::White);
 		toBeColored.setOutlineColor(sf::Color::White);
@@ -60,7 +64,10 @@ void Renderer::drawWell(sf::RenderWindow& window, Well toBeDrawn)
         for (int x = 0; x < BOARD_WIDTH; x++)
         {
 			block.setPosition(pixelPosition + sf::Vector2f(x * BLOCK_SIZE_PIXELS + BORDER_THICKNESS_PIXELS, y * BLOCK_SIZE_PIXELS + BORDER_THICKNESS_PIXELS));
-			setSfmlColors(block, wellBoard[y][x]);
+			if(y < 2)
+				setSfmlColors(block, Staging);
+			else
+				setSfmlColors(block, wellBoard[y][x]);
 			window.draw(block);
         }
     }

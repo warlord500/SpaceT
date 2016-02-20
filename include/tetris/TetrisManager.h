@@ -26,10 +26,10 @@ struct TetrisInputs
 
 struct TetrisOutputs
 {
-
+	bool gameOver;
 };
 
-class tetrisGameManager : private Renderer
+class tetrisGameManager
 {
 private:
     const static int BUTTON_HOLD_DELAY = 250; // In milliseconds
@@ -38,7 +38,9 @@ private:
     Tetrimino* tetriminoInPlay;
     Tetrimino* nextTetrimino;
     Well gameBoard;
+    Renderer renderer;
     bool tetriminoIsInPlay;
+    bool isStuck;
 
 	TetrisButtons wasPressed;
     sf::Clock moveLeftTimer;
@@ -55,6 +57,7 @@ private:
     void manageButtonDelays(TetrisButtons& rawButtons);
 public:
     tetrisGameManager(int windowHeight, int windowWidth);
+    ~tetrisGameManager();
     TetrisOutputs playTetris(sf::RenderWindow& window, TetrisInputs inputs);
 };
 

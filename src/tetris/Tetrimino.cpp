@@ -5,7 +5,7 @@
 
 Tetrimino::Tetrimino(BlockShapes type)
 {
-	location.row = 0;
+	location.row = -1;
 	location.col = 0;
 
 	// Initialize grid elements to zero
