@@ -5,6 +5,7 @@
 #include <tetris/Renderer.h>
 #include <tetris/Well.h>
 #include <tetris/Tetrimino.h>
+#include <tetris/Text.h>
 #include <tetris/Enums.h>
 
 namespace Tetris
@@ -43,6 +44,7 @@ private:
     Tetrimino* nextTetrimino;
     Well gameBoard;
     Renderer renderer;
+    Text text;
     Outputs outputs;
     bool tetriminoIsInPlay;
     bool isStuck;

@@ -119,7 +119,7 @@ Outputs GameManager::play(sf::RenderWindow& window, Inputs inputs)
         }
     }
     gameBoard.clearFullRows();
-
+	text.drawNext(window);
 	renderer.drawWell(window, gameBoard);
     renderer.drawTetrimino(window, *tetriminoInPlay);
     renderer.drawTetrimino(window, *nextTetrimino, true);
@@ -127,6 +127,7 @@ Outputs GameManager::play(sf::RenderWindow& window, Inputs inputs)
     {
     	if(gameBoard.tetriminoInStaging(*tetriminoInPlay))
 		{
+			text.drawGameOver(window);
 			outputs.gameOver = true;
 		}
 		else
