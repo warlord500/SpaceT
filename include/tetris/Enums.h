@@ -1,6 +1,8 @@
 #ifndef ENUMS_H
 #define ENUMS_H
 
+namespace Tetris
+{
 	// the following enum uses the url below as refernce
     // http://mercurymasterpunk.ca/images/tetris.jpg
 enum BlockShapes
@@ -27,5 +29,6 @@ enum BlockColors
 	Red,
 	Purple
 };
+}
 
 #endif // TETRISENUMS_HPP_INCLUDED

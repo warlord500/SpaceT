@@ -14,6 +14,7 @@ int main()
 Game::Game() : tetrisManager(screenHeight, screenWidth)
 {
 	window.create(sf::VideoMode(screenWidth, screenHeight), "Space Tetris");
+	window.setFramerateLimit(30);
 	//if(!images.addAllCommonTextures())
         //false; // Throw an exception or something
 
@@ -52,10 +53,9 @@ void Game::gameLoop()
 		tetrisInputs.buttons.drop = sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
 		tetrisInputs.buttons.quickDrop = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
 
-        window.clear(sf::Color::Cyan);
-		tetrisOutputs = tetrisManager.playTetris(window, tetrisInputs);
+        window.clear(sf::Color::Black);
+		tetrisOutputs = tetrisManager.play(window, tetrisInputs);
 		assert(tetrisOutputs.gameOver == false);
-
         // remove from code because playermanager will replace the need for it.
         //eneMan.update(window);
         //playMan.update(window,screenRectSpaceInv);

@@ -3,6 +3,8 @@
 
 #include "Tetrimino.h"
 
+namespace Tetris
+{
 const int BOARD_HEIGHT = 24;
 const int BOARD_WIDTH = 8;
 
@@ -24,5 +26,6 @@ public:
     void getBoard(BlockColors boardCopy[][BOARD_WIDTH]) const;
     void boardDump() const;
 };
+}
 
 #endif

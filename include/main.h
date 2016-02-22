@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <space_invaders/spaceInvManager.h>
 #include <space_invaders/textureManager.h>
-#include <tetris/TetrisManager.h>
+#include <tetris/Manager.h>
 
 const int screenWidth = 1020;
 const int screenHeight = 696;
@@ -17,9 +17,9 @@ public:
 	void gameLoop();
 private:
 	sf::RenderWindow window;
-	tetrisGameManager tetrisManager;
-	TetrisInputs tetrisInputs;
-	TetrisOutputs tetrisOutputs;
+	Tetris::GameManager tetrisManager;
+	Tetris::Inputs tetrisInputs;
+	Tetris::Outputs tetrisOutputs;
 	//spaceInvManager playMan;
     //textureManager images;
     //sf::FloatRect screenRectSpaceInv;

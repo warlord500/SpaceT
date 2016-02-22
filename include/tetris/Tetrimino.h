@@ -3,6 +3,9 @@
 
 #include <tetris/Enums.h>
 
+
+namespace Tetris
+{
 const int TETRIMINO_GRID_SIZE = 4;
 
 struct tetriminoLocation
@@ -40,5 +43,6 @@ private:
 	tetriminoLocation location;
 	int getRandomNumber(int low, int high);
 };
+}
 
 #endif

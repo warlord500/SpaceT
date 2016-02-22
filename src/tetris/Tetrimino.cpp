@@ -3,6 +3,8 @@
 #include <ctime>
 #include <iostream>
 
+using namespace Tetris;
+
 Tetrimino::Tetrimino(BlockShapes type)
 {
 	location.row = -1;

@@ -5,6 +5,8 @@
 #include <tetris/Tetrimino.h>
 #include <tetris/Well.h>
 
+namespace Tetris
+{
 class Renderer
 {
 private:
@@ -22,5 +24,6 @@ public:
 	void drawWell(sf::RenderWindow& window, Well toBeDrawn);
     void drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn, bool isNextPiece = false);
 };
+}
 
 #endif

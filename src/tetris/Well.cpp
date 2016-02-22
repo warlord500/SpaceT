@@ -1,6 +1,8 @@
 #include <iostream>
 #include <tetris/Well.h>
 
+using namespace Tetris;
+
 Well::Well()
 {
 	height = BOARD_HEIGHT;

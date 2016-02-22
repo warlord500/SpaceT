@@ -1,9 +1,12 @@
+#include <iostream>
 #include <SFML/Graphics.hpp>
-#include <tetris/TetrisManager.h>
+#include <tetris/Manager.h>
 #include <tetris/Renderer.h>
 #include <tetris/Enums.h>
 
-tetrisGameManager::tetrisGameManager(int windowHeight, int windowWidth)
+using namespace Tetris;
+
+GameManager::GameManager(int windowHeight, int windowWidth)
 	: renderer(windowHeight, windowWidth)
 {
     tetriminoIsInPlay = true;
@@ -17,18 +20,19 @@ tetrisGameManager::tetrisGameManager(int windowHeight, int windowWidth)
     wasPressed.drop = false;
     wasPressed.quickDrop = false;
 
-    tetrisOutputs.gameOver = false;
+    outputs.gameOver = false;
 
+	dropTime = INITIAL_DROP_TIME;
     isStuck = false;
 }
 
-tetrisGameManager::~tetrisGameManager()
+GameManager::~GameManager()
 {
 	delete tetriminoInPlay;
 	delete nextTetrimino;
 }
 
-bool tetrisGameManager::manageButtonDelay(sf::Clock& timer, const bool isPressed, bool& wasPressed)
+bool GameManager::manageButtonDelay(sf::Clock& timer, const bool isPressed, bool& wasPressed)
 {
     if(isPressed && (!wasPressed || timer.getElapsedTime().asMilliseconds() >= BUTTON_HOLD_DELAY))
     {
@@ -41,7 +45,7 @@ bool tetrisGameManager::manageButtonDelay(sf::Clock& timer, const bool isPressed
     return false;
 }
 
-void tetrisGameManager::manageButtonDelays(TetrisButtons& rawButtons)
+void GameManager::manageButtonDelays(Buttons& rawButtons)
 {
     rawButtons.moveLeft = manageButtonDelay(moveLeftTimer, rawButtons.moveLeft, wasPressed.moveLeft);
     rawButtons.moveRight = manageButtonDelay(moveRightTimer, rawButtons.moveRight, wasPressed.moveRight);
@@ -51,7 +55,7 @@ void tetrisGameManager::manageButtonDelays(TetrisButtons& rawButtons)
     rawButtons.quickDrop = manageButtonDelay(quickDropTimer, rawButtons.quickDrop, wasPressed.quickDrop);
 }
 
-TetrisOutputs tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisInputs inputs)
+Outputs GameManager::play(sf::RenderWindow& window, Inputs inputs)
 {
     if(!tetriminoIsInPlay)
     {
@@ -76,7 +80,7 @@ TetrisOutputs tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisInpu
         isStuck = true;
         autoDropTimer.restart();
     }
-    else if(inputs.buttons.drop || autoDropTimer.getElapsedTime().asMilliseconds() >= AUTO_DROP_TIMER)
+    else if(inputs.buttons.drop || autoDropTimer.getElapsedTime().asMilliseconds() >= dropTime)
     {
         tetriminoInPlay->moveDown();
         if(!gameBoard.tetriminoFit(*tetriminoInPlay))
@@ -123,13 +127,14 @@ TetrisOutputs tetrisGameManager::playTetris(sf::RenderWindow& window, TetrisInpu
     {
     	if(gameBoard.tetriminoInStaging(*tetriminoInPlay))
 		{
-			tetrisOutputs.gameOver = true;
+			outputs.gameOver = true;
 		}
 		else
 		{
 			delete tetriminoInPlay;
 			tetriminoIsInPlay = false;
+			dropTime--;
 		}
     }
-    return tetrisOutputs;
+    return outputs;
 }

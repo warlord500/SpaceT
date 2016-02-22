@@ -65,9 +65,9 @@
 		<Unit filename="include/space_invaders/spaceInvManager.h" />
 		<Unit filename="include/space_invaders/textureManager.h" />
 		<Unit filename="include/tetris/Enums.h" />
+		<Unit filename="include/tetris/Manager.h" />
 		<Unit filename="include/tetris/Renderer.h" />
 		<Unit filename="include/tetris/Tetrimino.h" />
-		<Unit filename="include/tetris/TetrisManager.h" />
 		<Unit filename="include/tetris/Well.h" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/space_invaders/bullet.cpp" />
@@ -75,9 +75,9 @@
 		<Unit filename="src/space_invaders/enemy.cpp" />
 		<Unit filename="src/space_invaders/player.cpp" />
 		<Unit filename="src/space_invaders/spaceInvManager.cpp" />
+		<Unit filename="src/tetris/Manager.cpp" />
 		<Unit filename="src/tetris/Renderer.cpp" />
 		<Unit filename="src/tetris/Tetrimino.cpp" />
-		<Unit filename="src/tetris/TetrisManager.cpp" />
 		<Unit filename="src/tetris/Well.cpp" />
 		<Extensions>
 			<code_completion />
