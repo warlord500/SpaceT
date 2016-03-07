@@ -16,3 +16,6 @@ SpaceT
 *~
 
 ./ahead.sh
+
+# a temporary folder for commit messages or simple code tests
+tmp/*

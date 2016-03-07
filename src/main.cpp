@@ -11,7 +11,7 @@ int main()
     return 0;
 }
 
-Game::Game() : tetrisManager(screenHeight, screenWidth)
+Game::Game() : tetrisManager(screenHeight, screenWidth) ,screenRectSpaceInv(300,0,400,500), playMan(images,screenRectSpaceInv)
 {
 	window.create(sf::VideoMode(screenWidth, screenHeight), "Space Tetris");
 	window.setFramerateLimit(30);
@@ -19,8 +19,6 @@ Game::Game() : tetrisManager(screenHeight, screenWidth)
 	  //  throw 0; // Throw an exception or something
 
 
-    //enemyManager eneMan(images,screenRectSpaceInv);
-            //the size of screen playing in.)
 }
 
 Game::~Game()
@@ -42,6 +40,8 @@ void Game::gameLoop()
 			case sf::Event::Closed:
 				window.close();
 				break;
+            default :
+                break;
 			}
         }
 
@@ -56,10 +56,8 @@ void Game::gameLoop()
         window.clear(sf::Color::Black);
 		tetrisOutputs = tetrisManager.play(window, tetrisInputs);
 		assert(tetrisOutputs.gameOver == false);
-        // remove from code because playermanager will replace the need for it.
-        //eneMan.update(window);
-        //playMan.update(window,screenRectSpaceInv);
-        // Update the window
+
+        playMan.update(window,screenRectSpaceInv);
         window.display();
     }
 }
