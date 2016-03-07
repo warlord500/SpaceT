@@ -12,10 +12,10 @@ class Renderer
 private:
 	const int WINDOW_HEIGHT;
 	const int WINDOW_WIDTH;
-	const static int TETRIS_BOARD_TOP = 10;
-    const static int TETRIS_BOARD_LEFT = 200;
-    const static int BLOCK_SIZE_PIXELS = 20;
-    const static int BORDER_THICKNESS_PIXELS = 2;
+	const static int TETRIS_BOARD_TOP = 0;
+	const static int TETRIS_BOARD_LEFT = 0;
+	const static int BLOCK_SIZE_PIXELS = 20;
+	const static int BORDER_THICKNESS_PIXELS = 2;
 
 	void setSfmlColors(sf::RectangleShape& toBeColored, const BlockColors color);
 

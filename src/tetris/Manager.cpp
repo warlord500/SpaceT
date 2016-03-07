@@ -34,6 +34,7 @@ GameManager::~GameManager()
 
 bool GameManager::manageButtonDelay(sf::Clock& timer, const bool isPressed, bool& wasPressed)
 {
+    //if delay on button has passed do work  
     if(isPressed && (!wasPressed || timer.getElapsedTime().asMilliseconds() >= BUTTON_HOLD_DELAY))
     {
         timer.restart();
@@ -77,7 +78,7 @@ Outputs GameManager::play(sf::RenderWindow& window, Inputs inputs)
         while(gameBoard.tetriminoFit(*tetriminoInPlay));
         tetriminoInPlay->moveUp();
         gameBoard.addTetriminoToWell(*tetriminoInPlay);
-        isStuck = true;
+        isStuck = true; 
         autoDropTimer.restart();
     }
     else if(inputs.buttons.drop || autoDropTimer.getElapsedTime().asMilliseconds() >= dropTime)

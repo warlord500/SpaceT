@@ -20,9 +20,11 @@ private:
 	Tetris::GameManager tetrisManager;
 	Tetris::Inputs tetrisInputs;
 	Tetris::Outputs tetrisOutputs;
-	//spaceInvManager playMan;
-    //textureManager images;
-    //sf::FloatRect screenRectSpaceInv;
+	//textureManager images; 
+	//spaceInvManager playMan(images);
+	//sf::FloatRect screenRectSpaceInv(0,300,400,500);
+	//this is for setting the position of the games so they dont overlap
+	//and look awful
 };
 
 #endif

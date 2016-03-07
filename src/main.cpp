@@ -16,10 +16,10 @@ Game::Game() : tetrisManager(screenHeight, screenWidth)
 	window.create(sf::VideoMode(screenWidth, screenHeight), "Space Tetris");
 	window.setFramerateLimit(30);
 	//if(!images.addAllCommonTextures())
-        //false; // Throw an exception or something
+	  //  throw 0; // Throw an exception or something
 
 
-   // enemyManager eneMan(images,screenRectSpaceInv);
+    //enemyManager eneMan(images,screenRectSpaceInv);
             //the size of screen playing in.)
 }
 

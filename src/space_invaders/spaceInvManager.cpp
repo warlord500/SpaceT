@@ -50,7 +50,7 @@ void spaceInvManager::update(sf::RenderWindow& app,const sf::FloatRect& screenSi
         {
             it->logic();
             app.draw(it->getSprite());
-            ++it;
+            ++it; //get next player bullet
         }
     }
     //note for next time
