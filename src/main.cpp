@@ -11,7 +11,7 @@ int main()
     return 0;
 }
 
-Game::Game() : tetrisManager(screenHeight, screenWidth) ,screenRectSpaceInv(300,0,400,500), playMan(images,screenRectSpaceInv)
+Game::Game() : tetrisManager(screenHeight, screenWidth) ,screenRectSpaceInv(400, 50,624,579), playMan(images,screenRectSpaceInv)
 {
 	window.create(sf::VideoMode(screenWidth, screenHeight), "Space Tetris");
 	window.setFramerateLimit(30);

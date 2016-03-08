@@ -98,15 +98,15 @@ public:
         sf::Texture playerTexture;
         if (!playerTexture.loadFromFile("player.png"))
             return false;
-        this->addTexture("player.png",playerTexture);
+        this->addTexture("assets/player.png",playerTexture);
         //player bullets
         sf::Texture pBulletTexture;
-        if(!pBulletTexture.loadFromFile("bullet.png"))
+        if(!pBulletTexture.loadFromFile("assets/bullet.png"))
             return false;
         this->addTexture("bullet.png",pBulletTexture);
 
          sf::Texture enemiesTexture;
-        if(!enemiesTexture.loadFromFile("enemy.png"))
+        if(!enemiesTexture.loadFromFile("assets/enemy.png"))
             return false;
         this->addTexture("enemy.png",enemiesTexture);
         return true;

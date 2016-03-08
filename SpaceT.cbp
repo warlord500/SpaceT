@@ -48,11 +48,11 @@
 				</Linker>
 			</Target>
 			<Target title="linux-debug">
+				<Option platforms="Unix;" />
 				<Option output="SpaceT" prefix_auto="1" extension_auto="1" />
-				<Option type="0" />
+				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-std=c++14" />
 					<Add option="-g" />
 					<Add directory="../c++_libs/SFML-2.3.2-source/include" />
 				</Compiler>
@@ -64,11 +64,11 @@
 				</Linker>
 			</Target>
 			<Target title="linux-release">
+				<Option platforms="Unix;" />
 				<Option output="SpaceT" prefix_auto="1" extension_auto="1" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-std=c++14" />
 					<Add directory="../c++_libs/SFML-2.3.2-source/include" />
 				</Compiler>
 				<Linker>
