@@ -8,7 +8,8 @@
 
 const int screenWidth = 1020;
 const int screenHeight = 696;
-
+//object oriented wrapper around the global variables 
+//of the game
 class Game
 {
 public:

@@ -7,5 +7,4 @@ bullet::bullet(const sf::Texture& texture,const sf::Vector2f& pos) :  sprite(tex
 
 bullet::~bullet()
 {
-    //dtor
 }
