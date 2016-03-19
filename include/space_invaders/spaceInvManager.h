@@ -49,7 +49,7 @@ public:
         function: update
 
         updates all instances involving the player on the space
-        invaders game. this function handles
+        invaders game. this function handles the collisons
     */
     void update(sf::RenderWindow&,const sf::FloatRect&);
 

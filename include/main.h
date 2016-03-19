@@ -21,11 +21,9 @@ private:
 	Tetris::GameManager tetrisManager;
 	Tetris::Inputs tetrisInputs;
 	Tetris::Outputs tetrisOutputs;
+	sf::FloatRect screenRectSpaceInv; //this is the postion data for the space invaders screen side
 	textureManager images;
 	spaceInvManager playMan;
-	sf::FloatRect screenRectSpaceInv;
-	//this is for setting the position of the games so they dont overlap
-	//and look awful
 };
 
 #endif
