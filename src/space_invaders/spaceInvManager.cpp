@@ -12,7 +12,7 @@ spaceInvManager::spaceInvManager(const textureManager& images,const sf::FloatRec
     images(images)
 {
     //create a starting enemy
-    enemy NewEnemy(this->images.getTexture("enemy.png"),sf::Vector2f(screenRect.left+50.0f,0.0f));
+    enemy NewEnemy(this->images.getTexture("assets/enemy.png"),sf::Vector2f(screenRect.left+50.0f,0.0f));
     this->enemiesList.push_back(NewEnemy);
 }
 void spaceInvManager::KeyEvents(const sf::FloatRect& screenSize)
@@ -20,7 +20,7 @@ void spaceInvManager::KeyEvents(const sf::FloatRect& screenSize)
     // test if it is ok to shoot.
         if(thePlayer.shootBullet())
     {
-        pBullet Nbullet(images.getTexture("bullet.png"),
+        pBullet Nbullet(images.getTexture("assets/bullet.png"),
                         thePlayer.getSprite().getPosition());
         this->playerBullets.push_back(Nbullet);
 
@@ -31,13 +31,15 @@ void spaceInvManager::KeyEvents(const sf::FloatRect& screenSize)
 
 void spaceInvManager::update(sf::RenderWindow& app,const sf::FloatRect& screenSize)
 {
-
+    //sf::CircleShape shape(50);
+    //shape.setFillColor(sf::Color(150, 50, 250));
+    //app.draw(shape);
      app.draw(thePlayer.getSprite());
     /*
         it is an iterator that points
         the current instance of the
         playerBullets.
-    */
+    * /
     auto it = playerBullets.begin();
     while( it != playerBullets.end())
     {
@@ -73,5 +75,5 @@ void spaceInvManager::update(sf::RenderWindow& app,const sf::FloatRect& screenSi
         };
         ++eneIT;
     }
-    this->KeyEvents(screenSize);
+    this->KeyEvents(screenSize); */
 }

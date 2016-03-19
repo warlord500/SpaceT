@@ -96,21 +96,21 @@ public:
    inline bool addAllCommonTextures(void)
     {
         sf::Texture playerTexture;
-        if (!playerTexture.loadFromFile("player.png"))
+        if (!playerTexture.loadFromFile("assets/player.png"))
             return false;
-        this->addTexture("assets/player.png",playerTexture);
-        //player bullets
+        this->addTexture("player.png",playerTexture);
+        /*//player bullets
         sf::Texture pBulletTexture;
         if(!pBulletTexture.loadFromFile("assets/bullet.png"))
             return false;
-        this->addTexture("bullet.png",pBulletTexture);
+        this->addTexture("assets/bullet.png",pBulletTexture);
 
-         sf::Texture enemiesTexture;
+        sf::Texture enemiesTexture;
         if(!enemiesTexture.loadFromFile("assets/enemy.png"))
             return false;
-        this->addTexture("enemy.png",enemiesTexture);
+        this->addTexture("assets/enemy.png",enemiesTexture);
+        */
         return true;
-
     }
 protected:
 private:

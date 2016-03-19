@@ -15,8 +15,10 @@ Game::Game() : tetrisManager(screenHeight, screenWidth) ,screenRectSpaceInv(400,
 {
 	window.create(sf::VideoMode(screenWidth, screenHeight), "Space Tetris");
 	window.setFramerateLimit(30);
-	//if(!images.addAllCommonTextures())
-	  //  throw 0; // Throw an exception or something
+	if(!images.addAllCommonTextures()){
+	    std::cout << "cant load external images";
+	    exit(2); // Throw an exception or something
+	}//*/
 
 
 }
@@ -54,8 +56,8 @@ void Game::gameLoop()
 		tetrisInputs.buttons.quickDrop = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
 
         window.clear(sf::Color::Black);
-		tetrisOutputs = tetrisManager.play(window, tetrisInputs);
-		assert(tetrisOutputs.gameOver == false);
+		//tetrisOutputs = tetrisManager.play(window, tetrisInputs);
+		//assert(tetrisOutputs.gameOver == false);
 
         playMan.update(window,screenRectSpaceInv);
         window.display();
