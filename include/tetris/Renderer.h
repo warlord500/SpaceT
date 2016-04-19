@@ -17,12 +17,20 @@ private:
 	const static int BLOCK_SIZE_PIXELS = 20;
 	const static int BORDER_THICKNESS_PIXELS = 2;
 
-	void setSfmlColors(sf::RectangleShape& toBeColored, const BlockColors color);
+	sf::Font font;
+	sf::Text nextTetrimino;
+	sf::Text levelUp;
+	sf::Text gameOver;
+
+	void setSfmlColors(sf::RectangleShape &toBeColored, const BlockColors color);
 
 public:
 	Renderer(int windowHeight, int windowWidth);
-	void drawWell(sf::RenderWindow& window, Well toBeDrawn);
-    void drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn, bool isNextPiece = false);
+	void drawWell(sf::RenderWindow &window, Well toBeDrawn);
+    void drawTetrimino(sf::RenderWindow &window, Tetrimino toBeDrawn, bool isNextPiece = false);
+    void drawNextText(sf::RenderWindow &window);
+    void drawLevelUpText(sf::RenderWindow &window);
+    void drawGameOverText(sf::RenderWindow &window);
 };
 }
 

@@ -8,7 +8,7 @@
 
 const int screenWidth = 1020;
 const int screenHeight = 696;
-//object oriented wrapper around the global variables 
+//object oriented wrapper around the global variables
 //of the game
 class Game
 {
@@ -21,7 +21,7 @@ private:
 	Tetris::GameManager tetrisManager;
 	Tetris::Inputs tetrisInputs;
 	Tetris::Outputs tetrisOutputs;
-	sf::FloatRect screenRectSpaceInv; //this is the postion data for the space invaders screen side
+	sf::FloatRect screenRectSpaceInv; //this is the position data for the space invaders screen side
 	textureManager images;
 	spaceInvManager playMan;
 };

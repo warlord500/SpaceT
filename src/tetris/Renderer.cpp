@@ -101,3 +101,18 @@ void Renderer::drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn, bool
                 window.draw(block);
             }
 }
+
+void Renderer::drawNextText(sf::RenderWindow &window)
+{
+
+}
+
+void Renderer::drawLevelUpText(sf::RenderWindow &window)
+{
+
+}
+
+void Renderer::drawGameOverText(sf::RenderWindow &window)
+{
+
+}

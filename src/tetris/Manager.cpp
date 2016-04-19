@@ -34,7 +34,7 @@ GameManager::~GameManager()
 
 bool GameManager::manageButtonDelay(sf::Clock& timer, const bool isPressed, bool& wasPressed)
 {
-    //if delay on button has passed do work  
+    //if delay on button has passed do work
     if(isPressed && (!wasPressed || timer.getElapsedTime().asMilliseconds() >= BUTTON_HOLD_DELAY))
     {
         timer.restart();
@@ -46,7 +46,7 @@ bool GameManager::manageButtonDelay(sf::Clock& timer, const bool isPressed, bool
     return false;
 }
 
-void GameManager::manageButtonDelays(Buttons& rawButtons)
+void GameManager::manageButtonDelays(Buttons &rawButtons)
 {
     rawButtons.moveLeft = manageButtonDelay(moveLeftTimer, rawButtons.moveLeft, wasPressed.moveLeft);
     rawButtons.moveRight = manageButtonDelay(moveRightTimer, rawButtons.moveRight, wasPressed.moveRight);
@@ -78,7 +78,7 @@ Outputs GameManager::play(sf::RenderWindow& window, Inputs inputs)
         while(gameBoard.tetriminoFit(*tetriminoInPlay));
         tetriminoInPlay->moveUp();
         gameBoard.addTetriminoToWell(*tetriminoInPlay);
-        isStuck = true; 
+        isStuck = true;
         autoDropTimer.restart();
     }
     else if(inputs.buttons.drop || autoDropTimer.getElapsedTime().asMilliseconds() >= dropTime)
@@ -120,7 +120,7 @@ Outputs GameManager::play(sf::RenderWindow& window, Inputs inputs)
         }
     }
     gameBoard.clearFullRows();
-	text.drawNext(window);
+	renderer.drawNextText(window);
 	renderer.drawWell(window, gameBoard);
     renderer.drawTetrimino(window, *tetriminoInPlay);
     renderer.drawTetrimino(window, *nextTetrimino, true);
@@ -128,7 +128,7 @@ Outputs GameManager::play(sf::RenderWindow& window, Inputs inputs)
     {
     	if(gameBoard.tetriminoInStaging(*tetriminoInPlay))
 		{
-			text.drawGameOver(window);
+			renderer.drawGameOverText(window);
 			outputs.gameOver = true;
 		}
 		else
