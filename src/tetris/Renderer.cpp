@@ -1,11 +1,12 @@
 #include <tetris/Renderer.h>
 #include <tetris/Well.h>
 #include <tetris/Tetrimino.h>
+
 using namespace Tetris;
 
 Renderer::Renderer(int windowHeight, int windowWidth) : WINDOW_HEIGHT(windowHeight), WINDOW_WIDTH(windowWidth)
 {
-
+    font.loadFromFile("assets/Fonts/tetricide.ttf");
 }
 
 void Renderer::setSfmlColors(sf::RectangleShape& toBeColored, const BlockColors color)

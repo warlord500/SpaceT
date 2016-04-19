@@ -99,7 +99,6 @@
 		<Unit filename="include/tetris/Manager.h" />
 		<Unit filename="include/tetris/Renderer.h" />
 		<Unit filename="include/tetris/Tetrimino.h" />
-		<Unit filename="include/tetris/Text.h" />
 		<Unit filename="include/tetris/Well.h" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/space_invaders/bullet.cpp" />
@@ -110,7 +109,6 @@
 		<Unit filename="src/tetris/Manager.cpp" />
 		<Unit filename="src/tetris/Renderer.cpp" />
 		<Unit filename="src/tetris/Tetrimino.cpp" />
-		<Unit filename="src/tetris/Text.cpp" />
 		<Unit filename="src/tetris/Well.cpp" />
 		<Extensions>
 			<code_completion />
