@@ -85,9 +85,6 @@
 			<Add option="-DSFML_STATIC" />
 			<Add directory="include" />
 		</Compiler>
-		<ExtraCommands>
-			<Add after="$(PROJECT_DIR)Update_Docs" />
-		</ExtraCommands>
 		<Unit filename="include/main.h" />
 		<Unit filename="include/space_invaders/bullet.h" />
 		<Unit filename="include/space_invaders/bullets/pBullet.hpp" />

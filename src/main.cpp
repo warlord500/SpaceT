@@ -11,7 +11,7 @@ int main()
     return 0;
 }
 
-Game::Game() : tetrisManager(screenHeight, screenWidth) ,screenRectSpaceInv(400, 50,624,579), playMan(images,screenRectSpaceInv)
+Game::Game() : tetrisManager(screenHeight, screenWidth), screenRectSpaceInv(400, 50,624,579), playMan(images,screenRectSpaceInv)
 {
 	window.create(sf::VideoMode(screenWidth, screenHeight), "Space Tetris");
 	window.setFramerateLimit(30);
@@ -55,7 +55,7 @@ void Game::gameLoop()
 
         window.clear(sf::Color::Black);
 		tetrisOutputs = tetrisManager.play(window, tetrisInputs);
-		assert(tetrisOutputs.gameOver == false);
+		assert(tetrisOutputs.gameOver == false); // Insert inter-game logic here
 
         playMan.update(window,screenRectSpaceInv);
         window.display();
