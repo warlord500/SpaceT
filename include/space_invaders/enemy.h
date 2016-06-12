@@ -1,5 +1,6 @@
 #ifndef ENEMIES_H
 #define ENEMIES_H
+
 #include <SFML/Graphics/Sprite.hpp>
 
 /*
@@ -9,6 +10,8 @@
     See Also:
         <enemyManager>
 */
+namespace SpaceInvaders
+{
 class enemy
 {
 public:
@@ -37,7 +40,7 @@ private:
     sf::Sprite sprite;
     const sf::Vector2f initPos;
     dir dirGoing;
-
 };
+}
 
 #endif // ENEMIES_H

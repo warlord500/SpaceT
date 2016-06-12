@@ -1,8 +1,10 @@
 #ifndef TEXTUREMANAGER_H
 #define TEXTUREMANAGER_H
+
 #include <SFML/Graphics/Texture.hpp>
 #include <map>
 #include <string>
+
 /*
 
     Class: textureManager
@@ -25,6 +27,8 @@
         std::map
         std::string
 */
+namespace SpaceInvaders
+{
 class textureManager
 {
 public:
@@ -116,5 +120,6 @@ protected:
 private:
     std::map<std::string,sf::Texture> gameTextures;
 };
+}
 
 #endif // TEXTUREMANAGER_H

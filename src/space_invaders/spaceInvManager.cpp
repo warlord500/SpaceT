@@ -3,6 +3,9 @@
 #include <SFML/Window/Keyboard.hpp>
 #include "main.h"
 #include <space_invaders/textureManager.h>
+
+using namespace SpaceInvaders;
+
 const static float moveSpeed = 4.0f;
 
 spaceInvManager::spaceInvManager(const textureManager& images,const sf::FloatRect& screenRect) :

@@ -3,7 +3,8 @@
 
 #include <space_invaders/bullet.h>
 
-
+namespace SpaceInvaders
+{
 class pBullet : public bullet
 {
     public:
@@ -25,5 +26,6 @@ class pBullet : public bullet
     protected:
     private:
 };
+}
 
 #endif // PBULLET_H

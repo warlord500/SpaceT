@@ -22,8 +22,8 @@ private:
 	Tetris::Inputs tetrisInputs;
 	Tetris::Outputs tetrisOutputs;
 	sf::FloatRect screenRectSpaceInv; //this is the position data for the space invaders screen side
-	textureManager images;
-	spaceInvManager playMan;
+	SpaceInvaders::textureManager images;
+	SpaceInvaders::spaceInvManager playMan;
 };
 
 #endif

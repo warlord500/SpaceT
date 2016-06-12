@@ -1,5 +1,8 @@
 #include "space_invaders/player.h"
-const static float moveSpeed = 4.0f; 
+
+using namespace SpaceInvaders;
+
+const static float moveSpeed = 4.0f;
 player::player(int lives,const sf::Texture& texture,const sf::Vector2f& pos) : sprite(texture),
     lives(lives)
 {
@@ -7,7 +10,7 @@ player::player(int lives,const sf::Texture& texture,const sf::Vector2f& pos) : s
 }
 bool player::shootBullet(void)
 {
-   //shoot only if the delay on shooter has passed 
+   //shoot only if the delay on shooter has passed
      if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && this->lastShotTime < std::chrono::system_clock::now())
     {
         this->lastShotTime = std::chrono::system_clock::now() + std::chrono::milliseconds(500);

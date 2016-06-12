@@ -1,10 +1,12 @@
 #ifndef PLAYER_H
 #define PLAYER_H
+
 #include <chrono>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Keyboard.hpp>
 #include <chrono>
+
 // TODO (jadon#1#): moves only long the x axis ...
 //create function to do that
 /*
@@ -14,6 +16,8 @@
     See Also:
         <playerManager> - manage players
 */
+namespace SpaceInvaders
+{
 class player
 {
 public:
@@ -89,5 +93,6 @@ private:
     unsigned int lives; //!< Member variable "lives"
     std::chrono::time_point<std::chrono::system_clock> lastShotTime;
 };
+}
 
 #endif // PLAYER_H

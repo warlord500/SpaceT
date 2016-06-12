@@ -1,15 +1,14 @@
 #ifndef PLAYERMANGER_H
 #define PLAYERMANGER_H
+
+#include <SFML/Graphics/RenderWindow.hpp>
 #include <space_invaders/player.h>
 #include <space_invaders/bullets/pBullet.hpp>
 #include <space_invaders/enemy.h>
+#include <space_invaders/textureManager.h>
 #include <list>
 #include <chrono>
-class textureManager;
-namespace sf
-{
-class RenderWindow;
-}
+
 /*
     Class: spaceInvadersManager
        manages and updates all entites on similar
@@ -21,6 +20,8 @@ class RenderWindow;
         <player> - instance this class manages
         <pbullet> - player bullet
 */
+namespace SpaceInvaders
+{
 class spaceInvManager
 {
 public:
@@ -89,5 +90,6 @@ private:
     std::list<enemy> enemiesList;
 
 };
+}
 
 #endif // PLAYERMANGER_H

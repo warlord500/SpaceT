@@ -1,6 +1,8 @@
 #ifndef BULLET_H
 #define BULLET_H
+
 #include <SFML/Graphics/Sprite.hpp>
+
 /*
     Class: bullet
         generic bullet class
@@ -18,6 +20,8 @@
     inherited by:
         <pBullet>
 */
+namespace SpaceInvaders
+{
 class bullet
 {
 public:
@@ -52,5 +56,6 @@ protected:
 private:
      sf::Sprite sprite;
 };
+}
 
 #endif // BULLET_H
