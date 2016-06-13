@@ -24,6 +24,7 @@ GameManager::GameManager(int windowHeight, int windowWidth)
 
 	dropTime = INITIAL_DROP_TIME;
     isStuck = false;
+    score = 0;
 }
 
 GameManager::~GameManager()
@@ -119,7 +120,7 @@ Outputs GameManager::play(sf::RenderWindow& window, Inputs inputs)
                 tetriminoInPlay->rotateRight();
         }
     }
-    gameBoard.clearFullRows();
+    score += gameBoard.clearFullRows() * 10;
 	renderer.drawNextText(window);
 	renderer.drawWell(window, gameBoard);
     renderer.drawTetrimino(window, *tetriminoInPlay);

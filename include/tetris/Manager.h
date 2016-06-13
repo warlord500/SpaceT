@@ -47,6 +47,7 @@ private:
     bool tetriminoIsInPlay;
     bool isStuck;
     int dropTime;
+    int score;
 
     // Button management
     Buttons wasPressed;

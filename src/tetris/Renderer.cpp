@@ -7,6 +7,12 @@ using namespace Tetris;
 Renderer::Renderer(int windowHeight, int windowWidth) : WINDOW_HEIGHT(windowHeight), WINDOW_WIDTH(windowWidth)
 {
     font.loadFromFile("assets/Fonts/tetricide.ttf");
+
+    // Initialize 'next' text
+    nextTetrimino.setFont(font);
+    nextTetrimino.setString("NEXT");
+    nextTetrimino.setCharacterSize(48);
+    nextTetrimino.setPosition(TETRIS_BOARD_LEFT + BOARD_WIDTH * BLOCK_SIZE_PIXELS, TETRIS_BOARD_TOP + BLOCK_SIZE_PIXELS * 2);
 }
 
 void Renderer::setSfmlColors(sf::RectangleShape& toBeColored, const BlockColors color)
@@ -105,7 +111,7 @@ void Renderer::drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn, bool
 
 void Renderer::drawNextText(sf::RenderWindow &window)
 {
-
+	window.draw(nextTetrimino);
 }
 
 void Renderer::drawLevelUpText(sf::RenderWindow &window)
