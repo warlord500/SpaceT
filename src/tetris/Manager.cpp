@@ -12,6 +12,7 @@ GameManager::GameManager(int windowHeight, int windowWidth)
     tetriminoIsInPlay = true;
     tetriminoInPlay = new Tetrimino(random_shape);
     nextTetrimino = new Tetrimino(random_shape);
+    holdTetrimino = NULL;
 
     wasPressed.moveLeft = false;
     wasPressed.moveRight = false;
@@ -122,9 +123,12 @@ Outputs GameManager::play(sf::RenderWindow& window, Inputs inputs)
     }
     score += gameBoard.clearFullRows() * 10;
 	renderer.drawNextText(window);
+	renderer.drawHoldText(window);
 	renderer.drawWell(window, gameBoard);
-    renderer.drawTetrimino(window, *tetriminoInPlay);
-    renderer.drawTetrimino(window, *nextTetrimino, true);
+    renderer.drawInPlay(window, *tetriminoInPlay);
+    renderer.drawNext(window, *nextTetrimino);
+    if(holdTetrimino != NULL)
+		renderer.drawHold(window, *holdTetrimino);
     if(isStuck)
     {
     	if(gameBoard.tetriminoInStaging(*tetriminoInPlay))

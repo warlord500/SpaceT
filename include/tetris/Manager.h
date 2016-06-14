@@ -41,6 +41,7 @@ private:
     // Game control
     Tetrimino* tetriminoInPlay;
     Tetrimino* nextTetrimino;
+    Tetrimino* holdTetrimino;
     Well gameBoard;
     Renderer renderer;
     Outputs outputs;

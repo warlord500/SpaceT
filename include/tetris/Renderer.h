@@ -19,16 +19,24 @@ private:
 
 	sf::Font font;
 	sf::Text nextTetrimino;
+	sf::Text hold;
 	sf::Text levelUp;
 	sf::Text gameOver;
 
-	void setSfmlColors(sf::RectangleShape &toBeColored, const BlockColors color);
+	sf::RectangleShape block;
+	sf::Vector2f nextPixelPosition;
+	sf::Vector2f holdPixelPosition;
 
+	void setSfmlColors(sf::RectangleShape &toBeColored, const BlockColors color);
+	void drawTetrimino(sf::RenderWindow &window, const Tetrimino &toBeDrawn, const sf::Vector2f &pixelPosition);
 public:
 	Renderer(int windowHeight, int windowWidth);
-	void drawWell(sf::RenderWindow &window, Well toBeDrawn);
-    void drawTetrimino(sf::RenderWindow &window, Tetrimino toBeDrawn, bool isNextPiece = false);
+	void drawWell(sf::RenderWindow &window, const Well &toBeDrawn);
+    void drawInPlay(sf::RenderWindow &window, const Tetrimino &toBeDrawn);
+    void drawNext(sf::RenderWindow &window, const Tetrimino &toBeDrawn);
+    void drawHold(sf::RenderWindow &window, const Tetrimino &toBeDrawn);
     void drawNextText(sf::RenderWindow &window);
+    void drawHoldText(sf::RenderWindow &window);
     void drawLevelUpText(sf::RenderWindow &window);
     void drawGameOverText(sf::RenderWindow &window);
 };

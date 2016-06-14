@@ -6,13 +6,26 @@ using namespace Tetris;
 
 Renderer::Renderer(int windowHeight, int windowWidth) : WINDOW_HEIGHT(windowHeight), WINDOW_WIDTH(windowWidth)
 {
+	block.setSize(sf::Vector2f(BLOCK_SIZE_PIXELS - BORDER_THICKNESS_PIXELS * 2, BLOCK_SIZE_PIXELS - BORDER_THICKNESS_PIXELS * 2));
+    block.setOutlineThickness(BORDER_THICKNESS_PIXELS);
+
+    nextPixelPosition.x = TETRIS_BOARD_LEFT + (BOARD_WIDTH + 1) * BLOCK_SIZE_PIXELS;
+	nextPixelPosition.y = TETRIS_BOARD_TOP + -1 * BLOCK_SIZE_PIXELS;
+	holdPixelPosition.x = nextPixelPosition.x;
+	holdPixelPosition.y = 0;
+
     font.loadFromFile("assets/Fonts/tetricide.ttf");
 
-    // Initialize 'next' text
+    // Initialize texts text
     nextTetrimino.setFont(font);
     nextTetrimino.setString("NEXT");
-    nextTetrimino.setCharacterSize(48);
+    nextTetrimino.setCharacterSize(BLOCK_SIZE_PIXELS * 2);
     nextTetrimino.setPosition(TETRIS_BOARD_LEFT + BOARD_WIDTH * BLOCK_SIZE_PIXELS, TETRIS_BOARD_TOP + BLOCK_SIZE_PIXELS * 2);
+
+    hold.setFont(font);
+    hold.setString("HOLD");
+    hold.setCharacterSize(BLOCK_SIZE_PIXELS * 2);
+    hold.setPosition(TETRIS_BOARD_LEFT + BOARD_WIDTH * BLOCK_SIZE_PIXELS, TETRIS_BOARD_TOP + BLOCK_SIZE_PIXELS * 6);
 }
 
 void Renderer::setSfmlColors(sf::RectangleShape& toBeColored, const BlockColors color)
@@ -58,7 +71,7 @@ void Renderer::setSfmlColors(sf::RectangleShape& toBeColored, const BlockColors 
     }
 }
 
-void Renderer::drawWell(sf::RenderWindow& window, Well toBeDrawn)
+void Renderer::drawWell(sf::RenderWindow& window, const Well &toBeDrawn)
 {
     sf::RectangleShape block;
     block.setSize(sf::Vector2f(BLOCK_SIZE_PIXELS - BORDER_THICKNESS_PIXELS * 2, BLOCK_SIZE_PIXELS - BORDER_THICKNESS_PIXELS * 2));
@@ -81,25 +94,20 @@ void Renderer::drawWell(sf::RenderWindow& window, Well toBeDrawn)
     }
 }
 
-void Renderer::drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn, bool isNextPiece)
+void Renderer::drawTetrimino(sf::RenderWindow &window, const Tetrimino &toBeDrawn, const sf::Vector2f &pixelPosition)
 {
-    sf::RectangleShape block;
     setSfmlColors(block, toBeDrawn.getColor());
-    block.setSize(sf::Vector2f(BLOCK_SIZE_PIXELS - BORDER_THICKNESS_PIXELS * 2, BLOCK_SIZE_PIXELS - BORDER_THICKNESS_PIXELS * 2));
-    block.setOutlineThickness(BORDER_THICKNESS_PIXELS);
-    tetriminoLocation position = toBeDrawn.getLocation();
-    sf::Vector2f pixelPosition;
     int tetriminoGrid[TETRIMINO_GRID_SIZE][TETRIMINO_GRID_SIZE];
     toBeDrawn.getGrid(tetriminoGrid);
 
-	if(isNextPiece)
+	/*if(isNextPiece)
 		// Sets the initial pixel location to on the top of and to the right of the Well.
 		pixelPosition.x = TETRIS_BOARD_LEFT + (BOARD_WIDTH + 1) * BLOCK_SIZE_PIXELS;
 	else
 		// Sets the initial pixel location to be the top left of the Well.
 		pixelPosition.x = TETRIS_BOARD_LEFT + position.col * BLOCK_SIZE_PIXELS;
 	pixelPosition.y = TETRIS_BOARD_TOP + position.row * BLOCK_SIZE_PIXELS;
-
+	*/
     for (int y = 0; y < TETRIMINO_GRID_SIZE; y++)
         for (int x = 0; x < TETRIMINO_GRID_SIZE; x++)
             if (tetriminoGrid[y][x] == 1)
@@ -109,17 +117,40 @@ void Renderer::drawTetrimino(sf::RenderWindow& window, Tetrimino toBeDrawn, bool
             }
 }
 
+void Renderer::drawInPlay(sf::RenderWindow &window, const Tetrimino &toBeDrawn)
+{
+	tetriminoLocation position = toBeDrawn.getLocation();
+	sf::Vector2f pixelPosition = {TETRIS_BOARD_LEFT + position.col * BLOCK_SIZE_PIXELS, TETRIS_BOARD_TOP + position.row * BLOCK_SIZE_PIXELS};
+
+    drawTetrimino(window, toBeDrawn, pixelPosition);
+}
+
+void Renderer::drawNext(sf::RenderWindow &window, const Tetrimino &toBeDrawn)
+{
+	drawTetrimino(window, toBeDrawn, nextPixelPosition);
+}
+
+void Renderer::drawHold(sf::RenderWindow &window, const Tetrimino &toBeDrawn)
+{
+	drawTetrimino(window, toBeDrawn, holdPixelPosition);
+}
+
 void Renderer::drawNextText(sf::RenderWindow &window)
 {
 	window.draw(nextTetrimino);
 }
 
+void Renderer::drawHoldText(sf::RenderWindow &window)
+{
+	window.draw(hold);
+}
+
 void Renderer::drawLevelUpText(sf::RenderWindow &window)
 {
-
+	window.draw(levelUp);
 }
 
 void Renderer::drawGameOverText(sf::RenderWindow &window)
 {
-
+	window.draw(gameOver);
 }
