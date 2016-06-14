@@ -17,6 +17,7 @@ struct Buttons
     bool rotateLeft;
     bool drop;
     bool quickDrop;
+    bool hold;
 };
 
 struct Inputs
@@ -47,6 +48,7 @@ private:
     Outputs outputs;
     bool tetriminoIsInPlay;
     bool isStuck;
+    bool hasHeld;
     int dropTime;
     int score;
 
@@ -59,6 +61,7 @@ private:
     sf::Clock dropTimer;
     sf::Clock quickDropTimer;
     sf::Clock autoDropTimer;
+    sf::Clock holdTimer;
 
     bool manageButtonDelay(sf::Clock& timer, const bool isPressed, bool& wasPressed);
     void manageButtonDelays(Buttons& rawButtons);

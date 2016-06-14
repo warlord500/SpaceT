@@ -52,6 +52,7 @@ void Game::gameLoop()
 		tetrisInputs.buttons.rotateLeft = sf::Keyboard::isKeyPressed(sf::Keyboard::Z);
 		tetrisInputs.buttons.drop = sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
 		tetrisInputs.buttons.quickDrop = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
+		tetrisInputs.buttons.hold = sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
 
         window.clear(sf::Color::Black);
 		tetrisOutputs = tetrisManager.play(window, tetrisInputs);

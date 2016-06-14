@@ -10,6 +10,7 @@ GameManager::GameManager(int windowHeight, int windowWidth)
 	: renderer(windowHeight, windowWidth)
 {
     tetriminoIsInPlay = true;
+    hasHeld = false;
     tetriminoInPlay = new Tetrimino(random_shape);
     nextTetrimino = new Tetrimino(random_shape);
     holdTetrimino = NULL;
@@ -56,6 +57,7 @@ void GameManager::manageButtonDelays(Buttons &rawButtons)
     rawButtons.rotateLeft = manageButtonDelay(rotateLeftTimer, rawButtons.rotateLeft, wasPressed.rotateLeft);
     rawButtons.drop = manageButtonDelay(dropTimer, rawButtons.drop, wasPressed.drop);
     rawButtons.quickDrop = manageButtonDelay(quickDropTimer, rawButtons.quickDrop, wasPressed.quickDrop);
+    rawButtons.hold = manageButtonDelay(holdTimer, rawButtons.hold, wasPressed.hold);
 }
 
 Outputs GameManager::play(sf::RenderWindow& window, Inputs inputs)
@@ -71,7 +73,27 @@ Outputs GameManager::play(sf::RenderWindow& window, Inputs inputs)
 
     manageButtonDelays(inputs.buttons);
 
-    if(inputs.buttons.quickDrop)
+    if(inputs.buttons.hold && !hasHeld)
+	{
+		// Resets the Tetrimino's position to default
+		// It also needs to reset its rotation...
+		tetriminoInPlay->setLocation(nextTetrimino->getLocation());
+
+		if(holdTetrimino == NULL)
+		{
+			holdTetrimino = tetriminoInPlay;
+			tetriminoIsInPlay = false;
+		}
+		else
+		{
+			Tetrimino *tempTetrimino;
+			tempTetrimino = holdTetrimino;
+			holdTetrimino = tetriminoInPlay;
+			tetriminoInPlay = tempTetrimino;
+		}
+		hasHeld = true;
+	}
+    else if(inputs.buttons.quickDrop)
     {
         do
         {
@@ -141,6 +163,7 @@ Outputs GameManager::play(sf::RenderWindow& window, Inputs inputs)
 			delete tetriminoInPlay;
 			tetriminoIsInPlay = false;
 			dropTime--;
+			hasHeld = false;
 		}
     }
     return outputs;

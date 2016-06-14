@@ -12,7 +12,7 @@ Renderer::Renderer(int windowHeight, int windowWidth) : WINDOW_HEIGHT(windowHeig
     nextPixelPosition.x = TETRIS_BOARD_LEFT + (BOARD_WIDTH + 1) * BLOCK_SIZE_PIXELS;
 	nextPixelPosition.y = TETRIS_BOARD_TOP + -1 * BLOCK_SIZE_PIXELS;
 	holdPixelPosition.x = nextPixelPosition.x;
-	holdPixelPosition.y = 0;
+	holdPixelPosition.y = TETRIS_BOARD_TOP + 3 * BLOCK_SIZE_PIXELS;
 
     font.loadFromFile("assets/Fonts/tetricide.ttf");
 
