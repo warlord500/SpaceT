@@ -78,6 +78,7 @@ Outputs GameManager::play(sf::RenderWindow& window, Inputs inputs)
 		// Resets the Tetrimino's position to default
 		// It also needs to reset its rotation...
 		tetriminoInPlay->setLocation(nextTetrimino->getLocation());
+		tetriminoInPlay->resetRotation();
 
 		if(holdTetrimino == NULL)
 		{

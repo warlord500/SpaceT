@@ -29,6 +29,7 @@ public:
 
 	void rotateLeft();
 	void rotateRight();
+	void resetRotation();
 	void moveLeft();
 	void moveRight();
 	void moveDown();
@@ -42,6 +43,7 @@ private:
 	BlockColors color;
 	tetriminoLocation location;
 	int getRandomNumber(int low, int high);
+	int degreesRotated;
 };
 }
 

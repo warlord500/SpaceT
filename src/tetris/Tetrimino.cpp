@@ -9,6 +9,7 @@ Tetrimino::Tetrimino(BlockShapes type)
 {
 	location.row = -1;
 	location.col = 0;
+	degreesRotated = 0;
 
 	// Initialize grid elements to zero
 	for(int x = 0; x < TETRIMINO_GRID_SIZE; x++)
@@ -119,6 +120,8 @@ void Tetrimino::rotateLeft()
 		for(int y = 0; y < TETRIMINO_GRID_SIZE; y++)
 			grid[TETRIMINO_GRID_SIZE - y - 1][x] = tempGrid[y][x];
 	}
+
+	degreesRotated = degreesRotated == 270 ? 0 : degreesRotated + 90;
 }
 
 void Tetrimino::rotateRight()
@@ -136,6 +139,14 @@ void Tetrimino::rotateRight()
 		for(int x = 0; x < TETRIMINO_GRID_SIZE; x++)
 			grid[y][TETRIMINO_GRID_SIZE - x - 1] = tempGrid[y][x];
 	}
+
+	degreesRotated = degreesRotated == 0 ? 270 : degreesRotated - 90;
+}
+
+void Tetrimino::resetRotation()
+{
+    while(degreesRotated != 0)
+        rotateRight();
 }
 
 void Tetrimino::moveLeft()
