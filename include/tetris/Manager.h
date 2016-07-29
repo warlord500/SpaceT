@@ -66,7 +66,7 @@ private:
     bool manageButtonDelay(sf::Clock& timer, const bool isPressed, bool& wasPressed);
     void manageButtonDelays(Buttons& rawButtons);
 public:
-    GameManager(int windowHeight, int windowWidth);
+    GameManager(sf::FloatRect screenRect);
     ~GameManager();
     Outputs play(sf::RenderWindow& window, Inputs inputs);
 };

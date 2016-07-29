@@ -3,15 +3,17 @@
 #include <iostream>
 #include <assert.h>
 
+const int THE_MEANING_OF_LIFE_THE_UNIVERSE_AND_EVERYTHING = 42;
+
 int main()
 {
     Game game;
     game.gameLoop();
 
-    return 0;
+    return THE_MEANING_OF_LIFE_THE_UNIVERSE_AND_EVERYTHING;
 }
 
-Game::Game() : tetrisManager(screenHeight, screenWidth), screenRectSpaceInv(400, 50,624,579), playMan(images,screenRectSpaceInv)
+Game::Game() : tetrisManager(sf::FloatRect(0, 0, 260, 480)), screenRectSpaceInv(400, 50,624,579), playMan(images,screenRectSpaceInv)
 {
 	window.create(sf::VideoMode(screenWidth, screenHeight), "Space Tetris");
 	window.setFramerateLimit(30);
@@ -58,7 +60,7 @@ void Game::gameLoop()
 		tetrisOutputs = tetrisManager.play(window, tetrisInputs);
 		assert(tetrisOutputs.gameOver == false); // Insert inter-game logic here
 
-        playMan.update(window,screenRectSpaceInv);
+        playMan.update(window, screenRectSpaceInv);
         window.display();
     }
 }

@@ -4,7 +4,7 @@
 
 using namespace Tetris;
 
-Renderer::Renderer(int windowHeight, int windowWidth) : WINDOW_HEIGHT(windowHeight), WINDOW_WIDTH(windowWidth)
+Renderer::Renderer(sf::FloatRect screenRect) : SCREEN_RECT(screenRect)
 {
 	block.setSize(sf::Vector2f(BLOCK_SIZE_PIXELS - BORDER_THICKNESS_PIXELS * 2, BLOCK_SIZE_PIXELS - BORDER_THICKNESS_PIXELS * 2));
     block.setOutlineThickness(BORDER_THICKNESS_PIXELS);

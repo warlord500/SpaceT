@@ -5,7 +5,7 @@
 #include <space_invaders/spaceInvManager.h>
 #include <space_invaders/textureManager.h>
 #include <tetris/Manager.h>
-
+// 260 x 480
 const int screenWidth = 1020;
 const int screenHeight = 696;
 //object oriented wrapper around the global variables

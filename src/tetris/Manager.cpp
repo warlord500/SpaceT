@@ -6,8 +6,8 @@
 
 using namespace Tetris;
 
-GameManager::GameManager(int windowHeight, int windowWidth)
-	: renderer(windowHeight, windowWidth)
+GameManager::GameManager(sf::FloatRect screenRect)
+	: renderer(screenRect)
 {
     tetriminoIsInPlay = true;
     hasHeld = false;

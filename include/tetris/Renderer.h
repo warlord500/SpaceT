@@ -10,11 +10,10 @@ namespace Tetris
 class Renderer
 {
 private:
-	const int WINDOW_HEIGHT;
-	const int WINDOW_WIDTH;
+    const sf::FloatRect SCREEN_RECT;
 	const static int TETRIS_BOARD_TOP = 0;
 	const static int TETRIS_BOARD_LEFT = 0;
-	const static int BLOCK_SIZE_PIXELS = 20;
+	const static int BLOCK_SIZE_PIXELS = 20; // 13*24
 	const static int BORDER_THICKNESS_PIXELS = 2;
 
 	sf::Font font;
@@ -30,7 +29,7 @@ private:
 	void setSfmlColors(sf::RectangleShape &toBeColored, const BlockColors color);
 	void drawTetrimino(sf::RenderWindow &window, const Tetrimino &toBeDrawn, const sf::Vector2f &pixelPosition);
 public:
-	Renderer(int windowHeight, int windowWidth);
+	Renderer(sf::FloatRect screenRect);
 	void drawWell(sf::RenderWindow &window, const Well &toBeDrawn);
     void drawInPlay(sf::RenderWindow &window, const Tetrimino &toBeDrawn);
     void drawNext(sf::RenderWindow &window, const Tetrimino &toBeDrawn);
