@@ -4,15 +4,18 @@
 
 using namespace Tetris;
 
-Renderer::Renderer(sf::FloatRect screenRect) : SCREEN_RECT(screenRect)
+//                                                    BLOCK_SIZE_PIXELS is set to the biggest possible value that preserves the desired aspect ratio of 13:24
+Renderer::Renderer(const sf::FloatRect &screenRect) : SCREEN_RECT(screenRect),
+                                                      BLOCK_SIZE_PIXELS(SCREEN_RECT.width / 13 < SCREEN_RECT.height / 24 ? SCREEN_RECT.width / 13 : SCREEN_RECT.height / 24),
+                                                      BORDER_THICKNESS_PIXELS(BLOCK_SIZE_PIXELS / 10)
 {
 	block.setSize(sf::Vector2f(BLOCK_SIZE_PIXELS - BORDER_THICKNESS_PIXELS * 2, BLOCK_SIZE_PIXELS - BORDER_THICKNESS_PIXELS * 2));
     block.setOutlineThickness(BORDER_THICKNESS_PIXELS);
 
-    nextPixelPosition.x = TETRIS_BOARD_LEFT + (BOARD_WIDTH + 1) * BLOCK_SIZE_PIXELS;
-	nextPixelPosition.y = TETRIS_BOARD_TOP + -1 * BLOCK_SIZE_PIXELS;
+    nextPixelPosition.x = SCREEN_RECT.left + (BOARD_WIDTH + 1) * BLOCK_SIZE_PIXELS;
+	nextPixelPosition.y = SCREEN_RECT.top - BLOCK_SIZE_PIXELS;
 	holdPixelPosition.x = nextPixelPosition.x;
-	holdPixelPosition.y = TETRIS_BOARD_TOP + 3 * BLOCK_SIZE_PIXELS;
+	holdPixelPosition.y = SCREEN_RECT.top + 3 * BLOCK_SIZE_PIXELS;
 
     font.loadFromFile("assets/Fonts/tetricide.ttf");
 
@@ -20,12 +23,12 @@ Renderer::Renderer(sf::FloatRect screenRect) : SCREEN_RECT(screenRect)
     nextTetrimino.setFont(font);
     nextTetrimino.setString("NEXT");
     nextTetrimino.setCharacterSize(BLOCK_SIZE_PIXELS * 2);
-    nextTetrimino.setPosition(TETRIS_BOARD_LEFT + BOARD_WIDTH * BLOCK_SIZE_PIXELS, TETRIS_BOARD_TOP + BLOCK_SIZE_PIXELS * 2);
+    nextTetrimino.setPosition(SCREEN_RECT.left + BOARD_WIDTH * BLOCK_SIZE_PIXELS, SCREEN_RECT.top + BLOCK_SIZE_PIXELS * 2);
 
     hold.setFont(font);
     hold.setString("HOLD");
     hold.setCharacterSize(BLOCK_SIZE_PIXELS * 2);
-    hold.setPosition(TETRIS_BOARD_LEFT + BOARD_WIDTH * BLOCK_SIZE_PIXELS, TETRIS_BOARD_TOP + BLOCK_SIZE_PIXELS * 6);
+    hold.setPosition(SCREEN_RECT.left + BOARD_WIDTH * BLOCK_SIZE_PIXELS, SCREEN_RECT.top + BLOCK_SIZE_PIXELS * 6);
 }
 
 void Renderer::setSfmlColors(sf::RectangleShape& toBeColored, const BlockColors color)
@@ -76,7 +79,7 @@ void Renderer::drawWell(sf::RenderWindow& window, const Well &toBeDrawn)
     sf::RectangleShape block;
     block.setSize(sf::Vector2f(BLOCK_SIZE_PIXELS - BORDER_THICKNESS_PIXELS * 2, BLOCK_SIZE_PIXELS - BORDER_THICKNESS_PIXELS * 2));
     block.setOutlineThickness(BORDER_THICKNESS_PIXELS);
-    sf::Vector2f pixelPosition(TETRIS_BOARD_LEFT, TETRIS_BOARD_TOP);
+    sf::Vector2f pixelPosition(SCREEN_RECT.left, SCREEN_RECT.top);
     BlockColors wellBoard[BOARD_HEIGHT][BOARD_WIDTH];
     toBeDrawn.getBoard(wellBoard);
 
@@ -100,14 +103,6 @@ void Renderer::drawTetrimino(sf::RenderWindow &window, const Tetrimino &toBeDraw
     int tetriminoGrid[TETRIMINO_GRID_SIZE][TETRIMINO_GRID_SIZE];
     toBeDrawn.getGrid(tetriminoGrid);
 
-	/*if(isNextPiece)
-		// Sets the initial pixel location to on the top of and to the right of the Well.
-		pixelPosition.x = TETRIS_BOARD_LEFT + (BOARD_WIDTH + 1) * BLOCK_SIZE_PIXELS;
-	else
-		// Sets the initial pixel location to be the top left of the Well.
-		pixelPosition.x = TETRIS_BOARD_LEFT + position.col * BLOCK_SIZE_PIXELS;
-	pixelPosition.y = TETRIS_BOARD_TOP + position.row * BLOCK_SIZE_PIXELS;
-	*/
     for (int y = 0; y < TETRIMINO_GRID_SIZE; y++)
         for (int x = 0; x < TETRIMINO_GRID_SIZE; x++)
             if (tetriminoGrid[y][x] == 1)
@@ -120,7 +115,7 @@ void Renderer::drawTetrimino(sf::RenderWindow &window, const Tetrimino &toBeDraw
 void Renderer::drawInPlay(sf::RenderWindow &window, const Tetrimino &toBeDrawn)
 {
 	tetriminoLocation position = toBeDrawn.getLocation();
-	sf::Vector2f pixelPosition = {TETRIS_BOARD_LEFT + position.col * BLOCK_SIZE_PIXELS, TETRIS_BOARD_TOP + position.row * BLOCK_SIZE_PIXELS};
+	sf::Vector2f pixelPosition = {SCREEN_RECT.left + position.col * BLOCK_SIZE_PIXELS, SCREEN_RECT.top + position.row * BLOCK_SIZE_PIXELS};
 
     drawTetrimino(window, toBeDrawn, pixelPosition);
 }

@@ -13,6 +13,7 @@ int main()
     return THE_MEANING_OF_LIFE_THE_UNIVERSE_AND_EVERYTHING;
 }
 
+//                                               260 x 480 is a good size for Tetris
 Game::Game() : tetrisManager(sf::FloatRect(0, 0, 260, 480)), screenRectSpaceInv(400, 50,624,579), playMan(images,screenRectSpaceInv)
 {
 	window.create(sf::VideoMode(screenWidth, screenHeight), "Space Tetris");
