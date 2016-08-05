@@ -1,5 +1,5 @@
-#ifndef WELL_H
-#define WELL_H
+#ifndef TETRIS_WELL_H
+#define TETRIS_WELL_H
 
 #include "Tetrimino.h"
 

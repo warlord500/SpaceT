@@ -1,5 +1,5 @@
-#ifndef RENDERER_H
-#define RENDERER_H
+#ifndef TETRIS_RENDERER_H
+#define TETRIS_RENDERER_H
 
 #include <SFML/Graphics.hpp>
 #include <tetris/Tetrimino.h>

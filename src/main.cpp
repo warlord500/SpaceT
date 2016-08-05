@@ -20,8 +20,6 @@ Game::Game() : tetrisManager(sf::FloatRect(0, 0, 260, 480)), screenRectSpaceInv(
 	window.setFramerateLimit(30);
 	//if(!images.addAllCommonTextures())
 	  //  throw 0; // Throw an exception or something
-
-
 }
 
 Game::~Game()

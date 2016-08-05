@@ -1,5 +1,5 @@
-#ifndef ENUMS_H
-#define ENUMS_H
+#ifndef TETRIS_ENUMS_H
+#define TETRIS_ENUMS_H
 
 namespace Tetris
 {
