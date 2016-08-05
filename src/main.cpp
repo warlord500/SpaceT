@@ -18,8 +18,7 @@ Game::Game() : tetrisManager(sf::FloatRect(0, 0, 260, 480)), screenRectSpaceInv(
 {
 	window.create(sf::VideoMode(screenWidth, screenHeight), "Space Tetris");
 	window.setFramerateLimit(30);
-	//if(!images.addAllCommonTextures())
-	  //  throw 0; // Throw an exception or something
+	assert(images.addAllCommonTextures());
 }
 
 Game::~Game()

@@ -97,12 +97,12 @@ public:
             true: - we completed successful
             false: we failed
     */
-   inline bool addAllCommonTextures(void)
+    inline bool addAllCommonTextures(void)
     {
         sf::Texture playerTexture;
-        if (!playerTexture.loadFromFile("player.png"))
+        if (!playerTexture.loadFromFile("assets/player.png"))
             return false;
-        this->addTexture("assets/player.png",playerTexture);
+        this->addTexture("player.png",playerTexture);
         //player bullets
         sf::Texture pBulletTexture;
         if(!pBulletTexture.loadFromFile("assets/bullet.png"))
