@@ -1,11 +1,11 @@
 # SpaceT
 Imagine Space Invaders and Tetris combined into one game.
 That is the point of this project. So far, we have
-a semi-working copy of Tetris. The game will be split into two different
-modes: one version where you play Tetris, and the second mode you play
+a working copy of Tetris and a semi-working copy of space invaders. The game will be split into two different
+modes: one version where you play Tetris, and the second mode where you play
 Space Invaders.
 
-While you're playing Tetris, every time you destroy a row
+While you're playing Tetris, every time you destroy a row,
 an extra set of strong enemies will be sent to the space invaders side.
 These enemies will be marked so to distinguish them from the rest.
 
