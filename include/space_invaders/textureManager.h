@@ -34,6 +34,11 @@ class textureManager
 public:
     // group: public
 
+	inline textureManager(void)
+	{
+		addAllCommonTextures();
+	}
+
     /* Function: getTexture(std::string)
         get texture by id.
         the id is usally the name of the file.

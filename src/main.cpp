@@ -18,7 +18,6 @@ Game::Game() : tetrisManager(sf::FloatRect(0, 0, 260, 480)), screenRectSpaceInv(
 {
 	window.create(sf::VideoMode(screenWidth, screenHeight), "Space Tetris");
 	window.setFramerateLimit(30);
-	assert(images.addAllCommonTextures());
 }
 
 Game::~Game()
@@ -59,6 +58,7 @@ void Game::gameLoop()
 		assert(tetrisOutputs.gameOver == false); // Insert inter-game logic here
 
         playMan.update(window, screenRectSpaceInv);
+
         window.display();
     }
 }
