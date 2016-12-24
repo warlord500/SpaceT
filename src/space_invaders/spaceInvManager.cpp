@@ -1,12 +1,12 @@
-#include <space_invaders/spaceInvManager.h>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Keyboard.hpp>
 #include "main.h"
-#include <space_invaders/textureManager.h>
+#include "space_invaders/textureManager.h"
+#include "space_invaders/spaceInvManager.h"
 
 using namespace SpaceInvaders;
 
-const static float moveSpeed = 4.0f;
+const float moveSpeed = 4.0f;
 
 spaceInvManager::spaceInvManager(const textureManager& images,const sf::FloatRect& screenRect) :
         //initilize the player with texture and screenRect
