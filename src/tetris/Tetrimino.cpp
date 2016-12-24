@@ -74,6 +74,9 @@ Tetrimino::Tetrimino(BlockShapes type)
 		grid[1][1] = 1;
 		grid[1][2] = 1;
 		color = Green;
+		break;
+	default:
+		break;
 	};
 }
 
