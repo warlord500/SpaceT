@@ -10,7 +10,7 @@ namespace Tetris
 class Renderer
 {
 private:
-    const sf::FloatRect SCREEN_RECT;
+	const sf::FloatRect SCREEN_RECT;
 	const float BLOCK_SIZE_PIXELS; // 13*24 is the entire Tetris area in blocks
 	const float BORDER_THICKNESS_PIXELS;
 
@@ -29,13 +29,13 @@ private:
 public:
 	Renderer(const sf::FloatRect &screenRect);
 	void drawWell(sf::RenderWindow &window, const Well &toBeDrawn);
-    void drawInPlay(sf::RenderWindow &window, const Tetrimino &toBeDrawn);
-    void drawNext(sf::RenderWindow &window, const Tetrimino &toBeDrawn);
-    void drawHold(sf::RenderWindow &window, const Tetrimino &toBeDrawn);
-    void drawNextText(sf::RenderWindow &window);
-    void drawHoldText(sf::RenderWindow &window);
-    void drawLevelUpText(sf::RenderWindow &window);
-    void drawGameOverText(sf::RenderWindow &window);
+	void drawInPlay(sf::RenderWindow &window, const Tetrimino &toBeDrawn);
+	void drawNext(sf::RenderWindow &window, const Tetrimino &toBeDrawn);
+	void drawHold(sf::RenderWindow &window, const Tetrimino &toBeDrawn);
+	void drawNextText(sf::RenderWindow &window);
+	void drawHoldText(sf::RenderWindow &window);
+	void drawLevelUpText(sf::RenderWindow &window);
+	void drawGameOverText(sf::RenderWindow &window);
 };
 }
 

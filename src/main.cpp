@@ -7,10 +7,10 @@ const int THE_MEANING_OF_LIFE_THE_UNIVERSE_AND_EVERYTHING = 42;
 
 int main()
 {
-    Game game;
-    game.gameLoop();
+	Game game;
+	game.gameLoop();
 
-    return THE_MEANING_OF_LIFE_THE_UNIVERSE_AND_EVERYTHING;
+	return THE_MEANING_OF_LIFE_THE_UNIVERSE_AND_EVERYTHING;
 }
 
 //                                               260 x 480 is a good size for Tetris
@@ -27,28 +27,28 @@ Game::~Game()
 
 void Game::gameLoop()
 {
-    while (window.isOpen())
-    {
-        // Process events
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            // Close window : exit
-            switch(event.type)
+	while (window.isOpen())
+	{
+		// Process events
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			// Close window : exit
+			switch(event.type)
 			{
-            case sf::Event::KeyPressed:
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+			case sf::Event::KeyPressed:
+				if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 				{
-                    window.close();
+					window.close();
 				}
 				break;
 			case sf::Event::Closed:
 				window.close();
 				break;
-            default:
-                break;
+			default:
+				break;
 			}
-        }
+		}
 
 		// Collects data on the buttons pressed and reports to the Tetris manager
 		tetrisInputs.buttons.moveLeft = sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
@@ -59,12 +59,12 @@ void Game::gameLoop()
 		tetrisInputs.buttons.quickDrop = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
 		tetrisInputs.buttons.hold = sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
 
-        window.clear(sf::Color::Black);
+		window.clear(sf::Color::Black);
 		tetrisOutputs = tetrisManager.play(window, tetrisInputs);
 		assert(tetrisOutputs.gameOver == false); // Insert inter-game logic here
 
-        playMan.update(window, screenRectSpaceInv);
+		playMan.update(window, screenRectSpaceInv);
 
-        window.display();
-    }
+		window.display();
+	}
 }

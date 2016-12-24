@@ -3,7 +3,6 @@
 
 #include <tetris/Enums.h>
 
-
 namespace Tetris
 {
 const int TETRIMINO_GRID_SIZE = 4;

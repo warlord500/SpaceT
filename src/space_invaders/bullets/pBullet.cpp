@@ -4,10 +4,10 @@ using namespace SpaceInvaders;
 
 pBullet::pBullet(const sf::Texture& texture,const sf::Vector2f& pos) : bullet(texture,pos)
 {
-    //ctor
+	//ctor
 }
 
 pBullet::~pBullet()
 {
-    //dtor
+	//dtor
 }

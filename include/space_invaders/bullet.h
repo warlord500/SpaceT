@@ -4,57 +4,57 @@
 #include <SFML/Graphics/Sprite.hpp>
 
 /*
-    Class: bullet
-        generic bullet class
-        not useful for player or enemy
-    note:
-        this class is 90% header only.
+	Class: bullet
+		generic bullet class
+		not useful for player or enemy
+	note:
+		this class is 90% header only.
 
-    todo:
-        merge any all properties
-        of this class with pbullet.
+	todo:
+		merge any all properties
+		of this class with pbullet.
 
-    Depends on:
-        sf::sprite
+	Depends on:
+		sf::sprite
 
-    inherited by:
-        <pBullet>
+	inherited by:
+		<pBullet>
 */
 namespace SpaceInvaders
 {
 class bullet
 {
 public:
-    //Group: public
+	//Group: public
 
-    /*
-        Constructor: bullet(const sf::texture&,const sf::Vector2f&)
-            build visual entity
+	/*
+		Constructor: bullet(const sf::texture&,const sf::Vector2f&)
+			build visual entity
 
-        Parameters:
-            texture - the texture the bullet is going to use
-            pos - where to draw the bullet
-    */
-    bullet(const sf::Texture&, const sf::Vector2f& pos);
+		Parameters:
+			texture - the texture the bullet is going to use
+			pos - where to draw the bullet
+	*/
+	bullet(const sf::Texture&, const sf::Vector2f& pos);
 
-    // Function: getSprite
-    inline const sf::Sprite& getSprite()
-    {
-        return this->sprite;
-    }
-    virtual ~bullet();
+	// Function: getSprite
+	inline const sf::Sprite& getSprite()
+	{
+		return this->sprite;
+	}
+	virtual ~bullet();
 protected:
-    // Group: protected
+	// Group: protected
 
-    //Function: move(float)
-    // moves bullet in the y direction
-     inline void move(float y)
-    {
-        this->sprite.move(sf::Vector2f(0,y));
-    }
+	//Function: move(float)
+	// moves bullet in the y direction
+	inline void move(float y)
+	{
+		this->sprite.move(sf::Vector2f(0,y));
+	}
 
 private:
-     sf::Sprite sprite;
+	sf::Sprite sprite;
 };
 }
 

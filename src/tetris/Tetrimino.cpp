@@ -145,8 +145,8 @@ void Tetrimino::rotateRight()
 
 void Tetrimino::resetRotation()
 {
-    while(degreesRotated != 0)
-        rotateRight();
+	while(degreesRotated != 0)
+		rotateRight();
 }
 
 void Tetrimino::moveLeft()

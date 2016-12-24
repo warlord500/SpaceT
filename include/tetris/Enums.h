@@ -3,8 +3,8 @@
 
 namespace Tetris
 {
-	// the following enum uses the url below as refernce
-    // http://mercurymasterpunk.ca/images/tetris.jpg
+	// the following enum uses the url below as reference
+	// http://mercurymasterpunk.ca/images/tetris.jpg
 enum BlockShapes
 {
 	random_shape,
