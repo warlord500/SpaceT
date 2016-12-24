@@ -2,8 +2,8 @@
 #define TETRIS_RENDERER_H
 
 #include <SFML/Graphics.hpp>
-#include <tetris/Tetrimino.h>
-#include <tetris/Well.h>
+#include "tetris/Tetrimino.h"
+#include "tetris/Well.h"
 
 namespace Tetris
 {

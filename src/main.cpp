@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
-#include <main.h>
 #include <iostream>
 #include <assert.h>
+#include "main.h"
 
 const int THE_MEANING_OF_LIFE_THE_UNIVERSE_AND_EVERYTHING = 42;
 

@@ -1,7 +1,7 @@
-#ifndef PBULLET_H
-#define PBULLET_H
+#ifndef SPACEINVADERS_PBULLET_H
+#define SPACEINVADERS_PBULLET_H
 
-#include <space_invaders/bullet.h>
+#include "space_invaders/bullet.h"
 
 namespace SpaceInvaders
 {
@@ -28,4 +28,4 @@ class pBullet : public bullet
 };
 }
 
-#endif // PBULLET_H
+#endif // SPACEINVADERS_PBULLET_H

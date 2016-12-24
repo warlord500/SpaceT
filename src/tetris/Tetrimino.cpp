@@ -1,7 +1,7 @@
-#include <tetris/Tetrimino.h>
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
+#include "tetris/Tetrimino.h"
 
 using namespace Tetris;
 

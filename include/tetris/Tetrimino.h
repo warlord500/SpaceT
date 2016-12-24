@@ -1,7 +1,7 @@
 #ifndef TETRIS_TETRIMINO_H
 #define TETRIS_TETRIMINO_H
 
-#include <tetris/Enums.h>
+#include "tetris/Enums.h"
 
 namespace Tetris
 {

@@ -1,9 +1,9 @@
 #ifndef SPACEINVADERS_TEXTUREMANAGER_H
 #define SPACEINVADERS_TEXTUREMANAGER_H
 
-#include <SFML/Graphics/Texture.hpp>
 #include <map>
 #include <string>
+#include <SFML/Graphics/Texture.hpp>
 
 /*
 	Class: textureManager

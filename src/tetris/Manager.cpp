@@ -1,8 +1,8 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include <tetris/Manager.h>
-#include <tetris/Renderer.h>
-#include <tetris/Enums.h>
+#include "tetris/Manager.h"
+#include "tetris/Renderer.h"
+#include "tetris/Enums.h"
 
 using namespace Tetris;
 

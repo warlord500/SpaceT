@@ -1,6 +1,6 @@
-#include <tetris/Renderer.h>
-#include <tetris/Well.h>
-#include <tetris/Tetrimino.h>
+#include "tetris/Renderer.h"
+#include "tetris/Well.h"
+#include "tetris/Tetrimino.h"
 
 using namespace Tetris;
 

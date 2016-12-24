@@ -2,10 +2,10 @@
 #define TETRIS_MANAGER_H
 
 #include <SFML/Graphics.hpp>
-#include <tetris/Renderer.h>
-#include <tetris/Well.h>
-#include <tetris/Tetrimino.h>
-#include <tetris/Enums.h>
+#include "tetris/Renderer.h"
+#include "tetris/Well.h"
+#include "tetris/Tetrimino.h"
+#include "tetris/Enums.h"
 
 namespace Tetris
 {

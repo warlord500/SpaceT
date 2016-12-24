@@ -1,13 +1,13 @@
 #ifndef SPACEINVADERS_MANGER_H
 #define SPACEINVADERS_MANGER_H
 
-#include <SFML/Graphics/RenderWindow.hpp>
-#include <space_invaders/player.h>
-#include <space_invaders/bullets/pBullet.hpp>
-#include <space_invaders/enemy.h>
-#include <space_invaders/textureManager.h>
 #include <list>
 #include <chrono>
+#include <SFML/Graphics/RenderWindow.hpp>
+#include "space_invaders/player.h"
+#include "space_invaders/bullets/pBullet.hpp"
+#include "space_invaders/enemy.h"
+#include "space_invaders/textureManager.h"
 
 /*
 	Class: spaceInvadersManager

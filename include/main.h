@@ -2,9 +2,9 @@
 #define MAIN_H
 
 #include <SFML/Graphics.hpp>
-#include <space_invaders/spaceInvManager.h>
-#include <space_invaders/textureManager.h>
-#include <tetris/Manager.h>
+#include "space_invaders/spaceInvManager.h"
+#include "space_invaders/textureManager.h"
+#include "tetris/Manager.h"
 
 const int screenWidth = 1020;
 const int screenHeight = 696;
