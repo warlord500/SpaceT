@@ -1,11 +1,10 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef SPACEINVADERS_PLAYER_H
+#define SPACEINVADERS_PLAYER_H
 
 #include <chrono>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Keyboard.hpp>
-#include <chrono>
 
 // TODO (jadon#1#): moves only long the x axis ...
 //create function to do that
@@ -95,4 +94,4 @@ private:
 };
 }
 
-#endif // PLAYER_H
+#endif // SPACEINVADERS_PLAYER_H

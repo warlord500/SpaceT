@@ -1,5 +1,5 @@
-#ifndef ENEMIES_H
-#define ENEMIES_H
+#ifndef SPACEINVADERS_ENEMY_H
+#define SPACEINVADERS_ENEMY_H
 
 #include <SFML/Graphics/Sprite.hpp>
 
@@ -43,4 +43,4 @@ private:
 };
 }
 
-#endif // ENEMIES_H
+#endif // SPACEINVADERS_ENEMY_H

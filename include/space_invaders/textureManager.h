@@ -1,5 +1,5 @@
-#ifndef TEXTUREMANAGER_H
-#define TEXTUREMANAGER_H
+#ifndef SPACEINVADERS_TEXTUREMANAGER_H
+#define SPACEINVADERS_TEXTUREMANAGER_H
 
 #include <SFML/Graphics/Texture.hpp>
 #include <map>
@@ -127,4 +127,4 @@ private:
 };
 }
 
-#endif // TEXTUREMANAGER_H
+#endif // SPACEINVADERS_TEXTUREMANAGER_H

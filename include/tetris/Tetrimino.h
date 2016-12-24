@@ -1,5 +1,5 @@
-#ifndef TETRIS_TETRIMINO
-#define TETRIS_TETRIMINO
+#ifndef TETRIS_TETRIMINO_H
+#define TETRIS_TETRIMINO_H
 
 #include <tetris/Enums.h>
 

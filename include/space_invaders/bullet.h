@@ -1,5 +1,5 @@
-#ifndef BULLET_H
-#define BULLET_H
+#ifndef SPACEINVADERS_BULLET_H
+#define SPACEINVADERS_BULLET_H
 
 #include <SFML/Graphics/Sprite.hpp>
 
@@ -58,4 +58,4 @@ private:
 };
 }
 
-#endif // BULLET_H
+#endif // SPACEINVADERS_BULLET_H

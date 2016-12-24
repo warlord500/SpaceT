@@ -1,5 +1,5 @@
-#ifndef PLAYERMANGER_H
-#define PLAYERMANGER_H
+#ifndef SPACEINVADERS_MANGER_H
+#define SPACEINVADERS_MANGER_H
 
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <space_invaders/player.h>
@@ -92,4 +92,4 @@ private:
 };
 }
 
-#endif // PLAYERMANGER_H
+#endif // SPACEINVADERS_MANGER_H
