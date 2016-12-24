@@ -40,8 +40,8 @@ void Game::gameLoop()
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 				{
                     window.close();
-                    break;
 				}
+				break;
 			case sf::Event::Closed:
 				window.close();
 				break;
