@@ -37,8 +37,11 @@ void Game::gameLoop()
             switch(event.type)
 			{
             case sf::Event::KeyPressed:
-                if(!sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+				{
+                    window.close();
                     break;
+				}
 			case sf::Event::Closed:
 				window.close();
 				break;
